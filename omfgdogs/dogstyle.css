@@ -1,36 +1,26 @@
 body
 {
-	color: Bisque;
 	background-image: none;
 }
 
+
 @media (min-width: 992px) {
 	body{
+		text-indent: 100%;
+    	white-space: nowrap;
+    	overflow: hidden;
 		background-image: url('omfgdogs.gif');
-		color: Bisque;
+		color: Black;
 	}
 }
 
-div
-{
-	position: absolute;
-	top: 5px;
-	right: 5px;
-	text-align: right;
-	font-size: 50px;
-	color: Bisque;
-}
 
 h1
 {
-	text-align: center;
-	color: Bisque;
+	text-indent: 80%;
+	margin-bottom: 5px
 	font-size: 50px;
-}
-
-a 
-{
 	font-weight: bold;
-	color: Bisque;
-
+	color: black;
 }
+
