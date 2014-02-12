@@ -9,10 +9,10 @@ a
 	position: fixed;
 	left: 0px;
 	bottom: 0px;
-	height: 40px;
+	height: 7%;
 	width: 100%;
 	opacity: 0.0;
-	color: white;
+	color: Black;
 }
 @media (min-width: 992px) {
 	body{
