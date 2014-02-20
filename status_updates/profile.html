@@ -4,7 +4,18 @@
 
 <head>
 <title>Fecesbook</title>
-<script>        </script>
+<script>
+
+var currentDate = new Date();
+var parentElement= document.getElementById('status');
+var theFirstChild = parentElement.firstChild;
+var msg = document.getElementById("msg").value;
+var newElement = "currentDate.getMonth() + "/" + currentDate.getDay() + "/" + currentDate.getYear() + " " + currentDate.getHours() + ":" + currentDate.getMinutes() + " - " + msg";
+parentElement.insertBefore(newElement, theFirstChild);
+
+</script>
+
+
 </head>
 
 <body>
@@ -20,25 +31,10 @@
 		</ul>
 	</div>
 	<h2 id="fullname">Barney Gumble</h2>
-	<h3>What are you thinking about? <input type="text" id="msg" name="msg" size="30" /></h3>
+	<h3>What are you thinking about? <input type="text" id="msg" name="msg" size="30" onchange/></h3>
 	<h3>Updates</h3>
 	<div id="status">
 	</div>
-	<div id="yesterday">
-		<h3>Updates from yesterday:</h3>
-		<ul>
-			<li>Alice is now connected to Bob</li>
-			<li>Tom recommends Jerry</li>
-			<li>Harry just returned from a trip from Curaco</li>
-		</ul>
-	</div>
-	<div id="longlongtimeago">
-		<h3>Updates from long long time ago:</h3>
-		<ul>
-			<li>Harry just returned from a trip from Curaco</li>
-			<li>Joan is now connected to Mary</li>
-			<li>Steven is now connected to James</li>
-		</ul>
-	</div>
-</body>
+
 </html>
+
