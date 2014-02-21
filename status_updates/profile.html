@@ -6,13 +6,16 @@
 <title>Fecesbook</title>
 <script>
 
+function createUpdates(){
 var currentDate = new Date();
+var newP = document.createElement("p");
 var parentElement= document.getElementById('status');
 var theFirstChild = parentElement.firstChild;
 var msg = document.getElementById("msg").value;
-var newElement = "currentDate.getMonth() + "/" + currentDate.getDay() + "/" + currentDate.getYear() + " " + currentDate.getHours() + ":" + currentDate.getMinutes() + " - " + msg";
-parentElement.insertBefore(newElement, theFirstChild);
-
+newP.innerHTML = currentDate.getMonth() + "/" + currentDate.getDay() + "/" + currentDate.getFullYear() + " " + (currentDate.getUTCHours() + 5) + ":" + currentDate.getMinutes() + " - " + msg;
+parentElement.insertBefore(newP, theFirstChild);
+document.getElementById("msg").value = "";
+}
 </script>
 
 
@@ -31,7 +34,7 @@ parentElement.insertBefore(newElement, theFirstChild);
 		</ul>
 	</div>
 	<h2 id="fullname">Barney Gumble</h2>
-	<h3>What are you thinking about? <input type="text" id="msg" name="msg" size="30" onchange/></h3>
+	<h3>What are you thinking about? <input type="text" id="msg" name="msg" size="30" onchange="createUpdates()"/></h3>
 	<h3>Updates</h3>
 	<div id="status">
 	</div>
