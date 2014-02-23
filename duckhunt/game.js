@@ -1,1 +1,6 @@
-// Your work goes here...
+function draw()
+{
+
+	canvas = document.getElementById('game');
+	ctx = canvas.getContext('2d');
+}
