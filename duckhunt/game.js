@@ -3,14 +3,12 @@ function draw()
 
 	var canvas = document.getElementById('game');
 	var ctx = canvas.getContext('2d');
-//	ctx.fillStyle = "#C96A1B";
-//	ctx.fillRect(0,0,800,600);
+
 	var spriteSheet = new Image();
 	spriteSheet.addEventListener("load", function() {
        ctx.drawImage(spriteSheet, 0, 270, 80, 130, 20, 60, 200, 400);
        ctx.drawImage(spriteSheet, 0, 700, 900, 200, 0, 300, 800, 300);
-    //   ctx.fillStyle = "#C96A1B";
-    //   ctx.fillRect(0,600,800,200);
+
        ctx.drawImage(spriteSheet, 0, 0, 60, 50, 300, 460, 160, 120);
 
        ctx.drawImage(spriteSheet, 250, 110, 45, 40, 500, 100, 100, 100);
