@@ -1,9 +1,10 @@
 function draw()
 {
-
+       //gets the canvas and context
 	var canvas = document.getElementById('game');
 	var ctx = canvas.getContext('2d');
 
+       //gets the spritesheet and calls the function when it is loaded
 	var spriteSheet = new Image();
 	spriteSheet.addEventListener("load", function() {
        ctx.drawImage(spriteSheet, 0, 270, 80, 130, 20, 60, 200, 400);
@@ -18,15 +19,7 @@ function draw()
        ctx.drawImage(spriteSheet, 38, 116, 40, 35, 10, 10, 100, 100);
 
 	}, false);
+
+       //sets the duckhunt access
 	spriteSheet.src = 'assets/duckhunt.png';
-
-
 }
-
-/*
-drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
-Given an image, this function takes the area of the source image 
-specified by the rectangle whose top-left corner is (sx, sy) and whose width and height are sWidth and sHeight and draws it into the canvas, placing it on the canvas at (dx, dy) and scaling it to the size specified by dWidth and dHeight.
-
-250 110 45 40
-*/
