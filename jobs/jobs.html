@@ -15,9 +15,24 @@
             var company = document.createTextNode(object[i]["company"]);
             var position = document.createTextNode(object[i]["position"]);
             var location = document.createTextNode(object[i]["location"]);
+            var newLine = document.createElement('br');
+         
+          
             list.appendChild(company);
+
+			var newLine = document.createElement('br');
+            list.appendChild(newLine);
             list.appendChild(position);
+
+            var newLine = document.createElement('br');
+            list.appendChild(newLine);
             list.appendChild(location); 
+
+            var newLine = document.createElement('br');
+            list.appendChild(newLine);
+            var newLine = document.createElement('br');
+            list.appendChild(newLine);
+
 		}
 
 
