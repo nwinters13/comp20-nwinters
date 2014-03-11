@@ -134,21 +134,16 @@ Red,Wollaston,42.2665139,-71.0203369'
 
 
 
+function calculateDistance()
+{
+	var R = 6371; // km
+	var dLat = (myLat-stationLat).toRad();
+	var dLon = (myLng-stationLng).toRad();
+	var myLat = myLat.toRad();
+	var lat2 = lat2.toRad();
 
-
-
-
-
-      		function calculateDistance()
-      		{
-      			var R = 6371; // km
-				var dLat = (myLat-stationLat).toRad();
-				var dLon = (myLng-stationLng).toRad();
-				var myLat = myLat.toRad();
-				var lat2 = lat2.toRad();
-
-				var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-        			Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
-				var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-				var d = R * c;
+	var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
+	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+	var d = R * c;
       		}
