@@ -69,7 +69,7 @@ function showOrange(map)
   var stationLocations = new Array(lines.Orange.length);
   for(var i = 0; i < lines.Orange.length; i++){
     var marker = new google.maps.Marker({
-      icon: 'mbtaicon.jpg'
+      icon: 'mbtaOrange.jpg'
     })
     marker.setPosition({
       lat: Number(lines.Orange[i].lat),
@@ -98,7 +98,7 @@ function showRed(map)
   var stationLocations = new Array(lines.Red.length);
   for(var i = 0; i < lines.Red.length; i++){
     var marker = new google.maps.Marker({
-      icon: 'mbtaicon.jpg'
+      icon: 'mbtaRed.jpg'
     })
     marker.setPosition({
       lat: Number(lines.Red[i].lat),
@@ -129,7 +129,7 @@ function showBlue(map)
   var stationLocations = new Array(lines.Blue.length);
   for(var i = 0; i < lines.Blue.length; i++){
     var marker = new google.maps.Marker({
-      icon: 'mbtaicon.jpg',
+      icon: 'mbtaBlue.jpg',
     });
     marker.setPosition({
       lat: Number(lines.Blue[i].lat),
