@@ -235,8 +235,8 @@ function buildStations(map)
    for (var i = splitString.length - 1; i >= 0; i--) {
         var lineSplit = splitString[i].split(",");
         var lineInfo = {stationInfo: lineSplit[1],
-                        latitude: lineSplit[2],
-                        longitude: lineSplit[3]};
+                        lat: (lineSplit[2]),
+                        lng: (lineSplit[3])};
         if(lineSplit[0] == "Red")                
           lines.Red.push(lineInfo);
         if(lineSplit[0] == "Blue")
