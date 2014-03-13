@@ -13,7 +13,7 @@ function createMap()
         zoom: 10,
         center: new google.maps.LatLng(myLat, myLng)
       }; 
-      map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+      var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
       marker = new google.maps.Marker({
         title: "You are here",
         position: mapOptions.center
@@ -36,7 +36,7 @@ function createMap()
  * createStation gets the request from the json and then figures out which
  *   line needs to be displayed
  */
-function createStation()
+function createStation(map)
 {
   var request = new XMLHttpRequest();
   request.open('GET', 
@@ -47,20 +47,20 @@ function createStation()
   console.log(response);
   var parsedResponse = JSON.parse(response);
   console.log(parsedResponse['line']);
-  buildStations();
+  buildStations(map);
   if(parsedResponse['line'] == "orange")
-    showOrange();
+    showOrange(map);
   else if(parsedResponse['line'] == "blue")
-    showBlue();
+    showBlue(map);
   else if(parsedResponse['line'] == "red")
-    showRed();
+    showRed(map);
 }
 
 /*
  * showOrange loops through the orange array within the lines object
  *   and puts on the trains information on the map
  */
-function showOrange()
+function showOrange(map)
 {
   for(var i = 0; i < lines.Orange.length; i++){
     var marker = new google.maps.Marker;
@@ -77,7 +77,7 @@ function showOrange()
  * showRed loops through the orange array within the lines object
  *   and puts on the trains information on the map
  */
-function showRed()
+function showRed(map)
 {
   for(var i = 0; i < lines.Red.length; i++){
     var marker = new google.maps.Marker;
@@ -94,7 +94,7 @@ function showRed()
  * showBlue loops through the orange array within the lines object
  *   and puts on the trains information on the map
  */
-function showBlue()
+function showBlue(map)
 {
   for(var i = 0; i < lines.Blue.length; i++){
     var marker = new google.maps.Marker;
@@ -108,7 +108,7 @@ function showBlue()
 }
 
 
-function buildStations()
+function buildStations(map)
 {
     str = 'Blue,Airport,42.374262,-71.030395*' + 
 'Blue,Aquarium,42.359784,-71.051652*' +
