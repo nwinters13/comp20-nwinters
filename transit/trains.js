@@ -19,7 +19,7 @@ function createMap()
       center: new google.maps.LatLng(myLat, myLng)
     };  
     map = new google.maps.InfoWindow();
-    google.maps.event.addDomListener(marker,*'click', function setWindow() {
+    google.maps.event.addDomListener(marker,'click', function setWindow() {
       infowindow.setContent("I am here: " + myLat + " " + myLng);
       infowindow.open(map, marker);
     });
@@ -27,7 +27,7 @@ function createMap()
     })
 }
 
-google.maps.event.addDomListener(window,*'load', createMap);
+google.maps.event.addDomListener(window,'load', createMap);
 
 
 
@@ -35,7 +35,7 @@ function createStation()
 {
   var request = new XMLHttpRequest();
   request.open('GET', 
-              *'http://mbtamap.herokuapp.com/mapper/rodeo.json', 
+              'http://mbtamap.herokuapp.com/mapper/rodeo.json', 
                request.send(null));
   var response = request.responseText;
   request.send(null);
@@ -54,15 +54,38 @@ function createStation()
 
 function showOrange()
 {
-  for(var i = 0; i < lines.Red.length; i++){
+  for(var i = 0; i < lines.Orange.length; i++){
     var marker = new google.maps.Marker;
     marker.setPosition({
       lat: lines.Orange[i].lat,
-      lng: lines.Orange[i].lng
+      lng: lines.Orange[i].lng,
     }
     marker.setMap(map);
   }
+}
 
+function showRed()
+{
+  for(var i = 0; i < lines.Red.length; i++){
+    var marker = new google.maps.Marker;
+    marker.setPosition({
+      lat: lines.Red[i].lat,
+      lng: lines.Red[i].lng
+    }
+    marker.setMap(map);
+  }
+}
+
+function showBlue()
+{
+  for(var i = 0; i < lines.Blue.length; i++){
+    var marker = new google.maps.Marker;
+    marker.setPosition({
+      lat: lines.Blue[i].lat,
+      lng: lines.Blue[i].lng
+    }
+    marker.setMap(map);
+  }
 }
 
 
