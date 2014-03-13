@@ -45,7 +45,7 @@ function createStation()
   request.send(null)
   var response = request.responseText;
   console.log(response);
-  var parsedResponse = JSON.parse(respone);
+  var parsedResponse = JSON.parse(response);
   console.log(parsedResponse['line']);
   buildStations();
   if(parsedResponse['line'] == "orange")
