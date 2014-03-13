@@ -46,8 +46,8 @@ function showOrange()
   for(var i = 0; i < lines.Orange.length; i++){
     var marker = new google.maps.Marker;
     marker.setPosition({
-      lat: lines.Orange[i].lat,
-      lng: lines.Orange[i].lng,
+      lat: Number(lines.Blue[i].lat),
+      lng: Number(lines.Blue[i].lng)
     })
     marker.setMap(map);
   }
@@ -58,8 +58,8 @@ function showRed()
   for(var i = 0; i < lines.Red.length; i++){
     var marker = new google.maps.Marker;
     marker.setPosition({
-      lat: lines.Red[i].lat,
-      lng: lines.Red[i].lng
+      lat: Number(lines.Blue[i].lat),
+      lng: Number(lines.Blue[i].lng)
     })
     marker.setMap(map);
   }
@@ -70,8 +70,8 @@ function showBlue()
   for(var i = 0; i < lines.Blue.length; i++){
     var marker = new google.maps.Marker;
     marker.setPosition({
-      lat: lines.Blue[i].lat,
-      lng: lines.Blue[i].lng
+      lat: Number(lines.Blue[i].lat),
+      lng: Number(lines.Blue[i].lng)
     })
 
     marker.setMap(map);
