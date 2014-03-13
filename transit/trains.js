@@ -19,7 +19,7 @@ function createMap()
     };  
     var map = new google.maps.InfoWindow();
     google.maps.event.addDomListener(marker, 'click', function() {
-      infowindow.setContent("I am here: " + myLat " " + myLng);
+      infowindow.setContent("I am here: " + myLat + " " + myLng);
       infowindow.open(map, marker);
     });
     createStation(map);
