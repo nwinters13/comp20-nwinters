@@ -13,7 +13,7 @@ function createMap()
         zoom: 10,
         center: new google.maps.LatLng(myLat, myLng)
       }; 
-      var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+      map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
       marker = new google.maps.Marker({
         title: "You are here",
         position: mapOptions.center
