@@ -1,9 +1,14 @@
+
+/*
+ * createMap finds my location and augments the map options then
+ * places me on the map and calls the station loader
+ */
 function createMap()
 {
     navigator.geolocation.getCurrentPosition(function getPosition(position){
       myLat = position.coords.latitude;
       myLng = position.coords.longitude;
-    });
+    
     var mapOptions = {
       zoom: 2,
       center: new google.maps.LatLng(myLat, myLng)
@@ -14,6 +19,7 @@ function createMap()
       infowindow.open(map, marker);
     });
     createStation(map);
+  });
 }
 
 google.maps.event.addDomListener(window,'load', createMap);
