@@ -19,7 +19,6 @@ function createMap()
         position: mapOptions.center
       });
       marker.setMap(map); 
-      map = new google.maps.InfoWindow();
       var infoWindow = new google.maps.InfoWindow();
       google.maps.event.addDomListener(marker,'click', function setWindow() {
         infoWindow.setContent("I am here: " + myLat + " " + myLng);
