@@ -68,11 +68,12 @@ function showOrange(map)
   console.log("IN ORGAN");
   var stationLocations = new Array(lines.Orange.length);
   for(var i = 0; i < lines.Orange.length; i++){
-    var marker = new google.maps.Marker;
+    var marker = new google.maps.Marker({
+      icon: 'mbtaT.jpg'
+    })
     marker.setPosition({
       lat: Number(lines.Orange[i].lat),
       lng: Number(lines.Orange[i].lng),
-      icon: 'mbtaT.jpg'
     })
     marker.setMap(map);
     stationLocations[i] = new google.maps.LatLng(lines.Orange[i].lat, lines.Orange[i].lng);
@@ -96,12 +97,13 @@ function showRed(map)
   console.log("IN RED");
   var stationLocations = new Array(lines.Red.length);
   for(var i = 0; i < lines.Red.length; i++){
-    var marker = new google.maps.Marker;
+    var marker = new google.maps.Marker({
+      icon: 'mbtaT.jpg'
+    })
     marker.setPosition({
       lat: Number(lines.Red[i].lat),
       lng: Number(lines.Red[i].lng),
-      icon: 'mbtaT.jpg'
-    })
+    });
     console.log(marker.lat);
     console.log(marker.lng);
     marker.setMap(map);
@@ -126,12 +128,13 @@ function showBlue(map)
   console.log("IN BLUE");
   var stationLocations = new Array(lines.Blue.length);
   for(var i = 0; i < lines.Blue.length; i++){
-    var marker = new google.maps.Marker;
+    var marker = new google.maps.Marker({
+      icon: 'mbtaT.jpg',
+    });
     marker.setPosition({
       lat: Number(lines.Blue[i].lat),
       lng: Number(lines.Blue[i].lng),
-      icon: 'mbtaT.jpg'
-    })
+    });
     console.log(marker.lat);
     console.log(marker.lng);
     marker.setMap(map);
