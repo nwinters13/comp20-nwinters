@@ -9,17 +9,24 @@ function createMap()
       myLat = position.coords.latitude;
       myLng = position.coords.longitude;
     
-    var mapOptions = {
-      zoom: 2,
-      center: new google.maps.LatLng(myLat, myLng)
-    };  
-    map = new google.maps.InfoWindow();
-    google.maps.event.addDomListener(marker,'click', function setWindow() {
-      infowindow.setContent("I am here: " + myLat + " " + myLng);
-      infowindow.open(map, marker);
+      var mapOptions = {
+        zoom: 2,
+        center: new google.maps.LatLng(myLat, myLng)
+      }; 
+      var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+      marker = new google.maps.Marker({
+        title: "You are here"
+        position: mapOptions.center;
+      });
+      marker.setMap(map); 
+      map = new google.maps.InfoWindow();
+      var infoWindow = google.maps.infoWindow();
+      google.maps.event.addDomListener(marker,'click', function setWindow() {
+        infoWindow.setContent("I am here: " + myLat + " " + myLng);
+        infoWindow.open(map, marker);
+      });
+      createStation(map);
     });
-    createStation(map);
-  });
 }
 
 google.maps.event.addDomListener(window,'load', createMap);
