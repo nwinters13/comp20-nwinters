@@ -44,7 +44,6 @@ function createStation()
                false);
   request.send(null)
   var response = request.responseText;
-  request.send(null);
   console.log(response);
   var parsedResponse = JSON.parse(respone);
   console.log(parsedResponse['line']);
