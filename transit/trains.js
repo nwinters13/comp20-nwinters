@@ -71,7 +71,8 @@ function showOrange(map)
     var marker = new google.maps.Marker;
     marker.setPosition({
       lat: Number(lines.Orange[i].lat),
-      lng: Number(lines.Orange[i].lng)
+      lng: Number(lines.Orange[i].lng),
+      icon: 'mbtaT.jpg'
     })
     marker.setMap(map);
     stationLocations[i] = new google.maps.LatLng(lines.Orange[i].lat, lines.Orange[i].lng);
@@ -98,7 +99,8 @@ function showRed(map)
     var marker = new google.maps.Marker;
     marker.setPosition({
       lat: Number(lines.Red[i].lat),
-      lng: Number(lines.Red[i].lng)
+      lng: Number(lines.Red[i].lng),
+      icon: 'mbtaT.jpg'
     })
     console.log(marker.lat);
     console.log(marker.lng);
@@ -127,7 +129,8 @@ function showBlue(map)
     var marker = new google.maps.Marker;
     marker.setPosition({
       lat: Number(lines.Blue[i].lat),
-      lng: Number(lines.Blue[i].lng)
+      lng: Number(lines.Blue[i].lng),
+      icon: 'mbtaT.jpg'
     })
     console.log(marker.lat);
     console.log(marker.lng);
