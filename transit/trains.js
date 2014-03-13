@@ -79,7 +79,7 @@ function showOrange(map)
   var lineDrawing = new google.maps.Polyline({
     path: stationLocations,
     geodesic: true,
-    strokeColor: #ff6600,
+    strokeColor: '#ff6600',
     strokeWeight: 10,
   });
   lineDrawing.setMap(map);
@@ -108,7 +108,7 @@ function showRed(map)
   var lineDrawing = new google.maps.Polyline({
     path: stationLocations,
     geodesic: true,
-    strokeColor: #ff0000,
+    strokeColor: '#ff0000',
     strokeWeight: 10,
   });
   lineDrawing.setMap(map);
@@ -137,7 +137,7 @@ function showBlue(map)
   var lineDrawing = new google.maps.Polyline({
     path: stationLocations,
     geodesic: true,
-    strokeColor: #3300CC,
+    strokeColor: '#3300CC',
     strokeWeight: 10,
   });
   lineDrawing.setMap(map);
