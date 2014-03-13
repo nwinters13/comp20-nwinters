@@ -41,7 +41,8 @@ function createStation()
   var request = new XMLHttpRequest();
   request.open('GET', 
               'http://mbtamap.herokuapp.com/mapper/rodeo.json', 
-               request.send(null));
+               false);
+  request.send(null)
   var response = request.responseText;
   request.send(null);
   console.log(response);
