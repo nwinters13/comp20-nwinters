@@ -20,7 +20,7 @@ function createMap()
       });
       marker.setMap(map); 
       map = new google.maps.InfoWindow();
-      var infoWindow = google.maps.infoWindow();
+      var infoWindow = new google.maps.infoWindow();
       google.maps.event.addDomListener(marker,'click', function setWindow() {
         infoWindow.setContent("I am here: " + myLat + " " + myLng);
         infoWindow.open(map, marker);
