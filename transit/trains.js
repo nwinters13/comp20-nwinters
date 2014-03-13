@@ -29,7 +29,7 @@ function createMap()
     });
 }
 
-google.maps.event.addDomListener(window,'load', createMap);
+//google.maps.event.addDomListener(window, 'load', createMap);
 
 
 /*
