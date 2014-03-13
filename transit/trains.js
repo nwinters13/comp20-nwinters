@@ -83,7 +83,7 @@ function showBlue()
     marker.setPosition({
       lat: lines.Blue[i].lat,
       lng: lines.Blue[i].lng
-    }
+    })
     marker.setMap(map);
   }
 }
