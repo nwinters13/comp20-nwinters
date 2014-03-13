@@ -230,7 +230,12 @@ function buildStations()
         var lineInfo = {stationInfo: lineSplit[1],
                         latitude: lineSplit[2],
                         longitude: lineSplit[3]};
-        lines.lineSplit[0].push(lineInfo);
+        if(lineSplit[0] == "Red")                
+          lines.Red.push(lineInfo);
+        if(lineSplit[0] == "Blue")
+          lines.Blue.push(lineInfo);
+        if(lineSplit[0] == "Orange")
+          lines.Orange.push(lineInfo);
     }
 }
 
