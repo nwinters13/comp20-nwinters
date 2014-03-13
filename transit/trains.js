@@ -1,19 +1,9 @@
-// Get my location
-// CHECK   Parse train info
-// DIsplay the map
-// Display the trains
-// Find closest station
-
-
-
-// css stuff...
-
-
 function createMap()
 {
     navigator.geolocation.getCurrentPosition(function getPosition(position){
-    myLat = position.coords.latitude;
-    myLng = position.coords.longitude;
+      myLat = position.coords.latitude;
+      myLng = position.coords.longitude;
+    });
     var mapOptions = {
       zoom: 2,
       center: new google.maps.LatLng(myLat, myLng)
@@ -24,7 +14,6 @@ function createMap()
       infowindow.open(map, marker);
     });
     createStation(map);
-    })
 }
 
 google.maps.event.addDomListener(window,'load', createMap);
@@ -59,7 +48,7 @@ function showOrange()
     marker.setPosition({
       lat: lines.Orange[i].lat,
       lng: lines.Orange[i].lng,
-    }
+    })
     marker.setMap(map);
   }
 }
@@ -71,7 +60,7 @@ function showRed()
     marker.setPosition({
       lat: lines.Red[i].lat,
       lng: lines.Red[i].lng
-    }
+    })
     marker.setMap(map);
   }
 }
@@ -84,6 +73,7 @@ function showBlue()
       lat: lines.Blue[i].lat,
       lng: lines.Blue[i].lng
     })
+
     marker.setMap(map);
   }
 }
