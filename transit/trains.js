@@ -15,8 +15,8 @@ function createMap()
       }; 
       var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
       marker = new google.maps.Marker({
-        title: "You are here"
-        position: mapOptions.center;
+        title: "You are here",
+        position: mapOptions.center
       });
       marker.setMap(map); 
       map = new google.maps.InfoWindow();
