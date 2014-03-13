@@ -61,6 +61,7 @@ function createStation(map)
  */
 function showOrange(map)
 {
+  console.log("IN ORGAN");
   for(var i = 0; i < lines.Orange.length; i++){
     var marker = new google.maps.Marker;
     marker.setPosition({
@@ -68,6 +69,8 @@ function showOrange(map)
       lng: Number(lines.Orange[i].lng)
     })
     marker.setMap(map);
+    console.log(marker.lat);
+    console.log(marker.lng);
   }
 }
 
@@ -78,12 +81,15 @@ function showOrange(map)
  */
 function showRed(map)
 {
+  console.log("IN RED");
   for(var i = 0; i < lines.Red.length; i++){
     var marker = new google.maps.Marker;
     marker.setPosition({
       lat: Number(lines.Red[i].lat),
       lng: Number(lines.Red[i].lng)
     })
+    console.log(marker.lat);
+    console.log(marker.lng);
     marker.setMap(map);
   }
 }
@@ -95,13 +101,15 @@ function showRed(map)
  */
 function showBlue(map)
 {
+  console.log("IN BLUE");
   for(var i = 0; i < lines.Blue.length; i++){
     var marker = new google.maps.Marker;
     marker.setPosition({
       lat: Number(lines.Blue[i].lat),
       lng: Number(lines.Blue[i].lng)
     })
-
+    console.log(marker.lat);
+    console.log(marker.lng);
     marker.setMap(map);
   }
 }
