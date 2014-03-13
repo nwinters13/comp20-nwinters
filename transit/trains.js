@@ -26,6 +26,11 @@ function createMap()
     })
 }
 
+function createStation(map)
+{
+  var 
+}
+
 
 function buildStations()
 {
@@ -136,9 +141,11 @@ Red,Shawmut,42.29312583,-71.06573796000001
 Red,South Station,42.352271,-71.05524200000001
 Red,Wollaston,42.2665139,-71.0203369'
 
-   lines = {Red: [],
-			Blue: [],
-			Orange: []};
+  lines = {
+    Red: [],
+	  Blue: [],
+		Orange: []
+  };
 
    var splitString = str.split("\n");
    
