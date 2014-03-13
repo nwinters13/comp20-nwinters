@@ -46,7 +46,7 @@ function createStation(map)
   console.log(response);
   var parsedResponse = JSON.parse(response);
   console.log(parsedResponse['line']);
-  if(request.statuts == 500){
+  if(request.status == 500){
     alert("Error: Could not retrieve data from server");
     return;
   }
@@ -132,7 +132,7 @@ function showBlue(map)
     console.log(marker.lat);
     console.log(marker.lng);
     marker.setMap(map);
-    stationLocations[i] = new google.maps.LatLng(lines.orange[i].lat, lines.organe[i].lng);
+    stationLocations[i] = new google.maps.LatLng(lines.Blue[i].lat, lines.Blue[i].lng);
   }
   var lineDrawing = new google.maps.Polyline({
     path: stationLocations,
