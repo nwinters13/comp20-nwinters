@@ -20,11 +20,11 @@ function createMap()
       });
       marker.setMap(map); 
       var infoWindow = new google.maps.InfoWindow();
+      google.maps.event.addDomListener(marker,'click', function setWindow() {
+        infoWindow.setContent("I am here at: " + myLat + " " + myLng);
+        infoWindow.open(map, marker);
+      });
       createStation(map);
-    });
-    google.maps.event.addDomListener(marker,'click', function setWindow() {
-      infoWindow.setContent("I am here at: " + myLat + " " + myLng);
-      infoWindow.open(map, marker);
     });
 }
 
@@ -46,6 +46,10 @@ function createStation(map)
   console.log(response);
   var parsedResponse = JSON.parse(response);
   console.log(parsedResponse['line']);
+  if(request.statuts == 500){
+    alert("Error: Could not retrieve data from server");
+    return;
+  }
   buildStations(map);
   if(parsedResponse['line'] == "orange")
     showOrange(map);
@@ -62,6 +66,7 @@ function createStation(map)
 function showOrange(map)
 {
   console.log("IN ORGAN");
+  var stationLocations = new Array(lines.Orange.length);
   for(var i = 0; i < lines.Orange.length; i++){
     var marker = new google.maps.Marker;
     marker.setPosition({
@@ -69,9 +74,15 @@ function showOrange(map)
       lng: Number(lines.Orange[i].lng)
     })
     marker.setMap(map);
-    console.log(marker.lat);
-    console.log(marker.lng);
+    stationLocations[i] = new google.maps.LatLng(lines.Orange[i].lat, lines.Orange[i].lng);
   }
+  var lineDrawing = new google.maps.Polyline({
+    path: stationLocations,
+    geodesic: true,
+    strokeColor: #ff6600,
+    strokeWeight: 10,
+  });
+  lineDrawing.setMap(map);
 }
 
 
@@ -82,6 +93,7 @@ function showOrange(map)
 function showRed(map)
 {
   console.log("IN RED");
+  var stationLocations = new Array(lines.Red.length);
   for(var i = 0; i < lines.Red.length; i++){
     var marker = new google.maps.Marker;
     marker.setPosition({
@@ -91,7 +103,15 @@ function showRed(map)
     console.log(marker.lat);
     console.log(marker.lng);
     marker.setMap(map);
+    stationLocations[i] = new google.maps.LatLng(lines.Red[i].lat, lines.Red[i].lng);
   }
+  var lineDrawing = new google.maps.Polyline({
+    path: stationLocations,
+    geodesic: true,
+    strokeColor: #ff0000,
+    strokeWeight: 10,
+  });
+  lineDrawing.setMap(map);
 }
 
 
@@ -102,6 +122,7 @@ function showRed(map)
 function showBlue(map)
 {
   console.log("IN BLUE");
+  var stationLocations = new Array(lines.Blue.length);
   for(var i = 0; i < lines.Blue.length; i++){
     var marker = new google.maps.Marker;
     marker.setPosition({
@@ -111,7 +132,15 @@ function showBlue(map)
     console.log(marker.lat);
     console.log(marker.lng);
     marker.setMap(map);
+    stationLocations[i] = new google.maps.LatLng(lines.orange[i].lat, lines.organe[i].lng);
   }
+  var lineDrawing = new google.maps.Polyline({
+    path: stationLocations,
+    geodesic: true,
+    strokeColor: #3300CC,
+    strokeWeight: 10,
+  });
+  lineDrawing.setMap(map);
 }
 
 
