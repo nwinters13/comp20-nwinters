@@ -1,5 +1,5 @@
 // Get my location
-// Parse train info
+// CHECK   Parse train info
 // DIsplay the map
 // Display the trains
 // Find closest station
@@ -118,7 +118,9 @@ Red,Wollaston,42.2665139,-71.0203369'
    lines = {Red: [],
 			Blue: [],
 			Orange: []};
+
    var splitString = str.split("\n");
+   
    for (var i = splitString.length - 1; i >= 0; i--) {
    			var lineSplit = splitString[i].split(",");
    			var lineInfo = {stationInfo: lineSplit[1],
