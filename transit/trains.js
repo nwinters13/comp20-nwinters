@@ -6,8 +6,29 @@
 // css stuff...
 
 
+google.maps.event.addDomListener(window, 'load', loadMap);
 
-function buildStations(){
+function createMap()
+{
+    navigator.geolocation.getCurrentPosition(function(position){
+    myLat = position.coords.latitude;
+    myLng = position.coords.longitude;
+    var mapOptions = {
+      zoom: 2,
+      center: new google.maps.LatLng(myLat, myLng)
+    };  
+    var map = new google.maps.InfoWindow();
+    google.maps.event.addDomListener(marker, 'click', function() {
+      infowindow.setContent("I am here: " + myLat " " + myLng);
+      infowindow.open(map, marker);
+    });
+    createStation(map);
+    })
+}
+
+
+function buildStations()
+{
     str = 'Blue,Airport,42.374262,-71.030395
 Blue,Aquarium,42.359784,-71.051652
 Blue,Beachmont,42.39754234,-70.99231944
@@ -148,4 +169,4 @@ function calculateDistance()
               Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
 	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
 	var d = R * c;
-      		}
+  }
