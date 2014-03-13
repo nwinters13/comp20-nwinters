@@ -56,31 +56,44 @@ function createStation()
     showRed();
 }
 
-
+/*
+ * showOrange loops through the orange array within the lines object
+ *   and puts on the trains information on the map
+ */
 function showOrange()
 {
   for(var i = 0; i < lines.Orange.length; i++){
     var marker = new google.maps.Marker;
     marker.setPosition({
-      lat: Number(lines.Blue[i].lat),
-      lng: Number(lines.Blue[i].lng)
+      lat: Number(lines.Orange[i].lat),
+      lng: Number(lines.Orange[i].lng)
     })
     marker.setMap(map);
   }
 }
 
+
+/*
+ * showRed loops through the orange array within the lines object
+ *   and puts on the trains information on the map
+ */
 function showRed()
 {
   for(var i = 0; i < lines.Red.length; i++){
     var marker = new google.maps.Marker;
     marker.setPosition({
-      lat: Number(lines.Blue[i].lat),
-      lng: Number(lines.Blue[i].lng)
+      lat: Number(lines.Red[i].lat),
+      lng: Number(lines.Red[i].lng)
     })
     marker.setMap(map);
   }
 }
 
+
+/*
+ * showBlue loops through the orange array within the lines object
+ *   and puts on the trains information on the map
+ */
 function showBlue()
 {
   for(var i = 0; i < lines.Blue.length; i++){
