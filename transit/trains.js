@@ -20,7 +20,7 @@ function createMap()
       });
       marker.setMap(map); 
       map = new google.maps.InfoWindow();
-      var infoWindow = new google.maps.infoWindow();
+      var infoWindow = new google.maps.InfoWindow();
       google.maps.event.addDomListener(marker,'click', function setWindow() {
         infoWindow.setContent("I am here: " + myLat + " " + myLng);
         infoWindow.open(map, marker);
@@ -32,7 +32,10 @@ function createMap()
 google.maps.event.addDomListener(window,'load', createMap);
 
 
-
+/*
+ * createStation gets the request from the json and then figures out which
+ *   line needs to be displayed
+ */
 function createStation()
 {
   var request = new XMLHttpRequest();
