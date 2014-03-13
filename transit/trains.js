@@ -230,7 +230,7 @@ function buildStations()
         var lineInfo = {stationInfo: lineSplit[1],
                         latitude: lineSplit[2],
                         longitude: lineSplit[3]};
-        lines[lineSplit[0]].append(lineInfo);
+        lines.lineSplit[0].push(lineInfo);
     }
 }
 
