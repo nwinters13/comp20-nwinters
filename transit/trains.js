@@ -219,17 +219,10 @@ function showBlue(map, parsedResponse)
 
 function createTable(stationName, parsedResponse) {
 
-      //  var table = document.createElement('table');
-      //  var tableTab = document.createElement('tbody');
+
         var content = '<p><b>' + stationName + '</b></p>';
         for (var i = 0; i < parsedResponse["schedule"].length; i++) {
-          console.log(i);
-          console.log('i^ length below');
-          console.log(parsedResponse['schedule'].length);
           for(var k = 0; k < parsedResponse['schedule'][i]['Predictions'].length; k++){
-            console.log(k);
-            console.log('k^  length below');
-            console.log(parsedResponse['schedule'][i]['Predictions'].length);
             if(parsedResponse['schedule'][i]['Predictions'][k]['Stop'] == stationName){
              content = content + '<p>' + parsedResponse['line'] + '   ' + parsedResponse['schedule'][i]['TripID'] + '   ' + 
                           parsedResponse['schedule'][i]['Destination'] + '   ' + 
