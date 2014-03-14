@@ -149,12 +149,27 @@ function showRed(map)
       }
     }(i));
   }
-  var lineDrawing = new google.maps.Polyline({
+  var largestPath = new Array(13);
+  var rightPath = new Array(5);
+  for(var i = 0; i < lines.Red.length; i++){
+    if(i <= 16)
+      largestPath.append(stationLocations[i]);
+    else rightPath.append(stationLocations[i]);
+  }
+  drawRed(largestPath);
+  drawRed(rightPath);
+
+}
+
+function drawRed(stationLocations, map){
+    var lineDrawing = new google.maps.Polyline({
     path: stationLocations,
     geodesic: true,
     strokeColor: '#ff0000',
     strokeWeight: 10,
   });
+
+
   lineDrawing.setMap(map);
 }
 
