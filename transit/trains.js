@@ -80,6 +80,10 @@ function showOrange(map)
     stationLocations[i] = new google.maps.LatLng(lines.Orange[i].lat, lines.Orange[i].lng);
 
     var infoWindow = new google.maps.InfoWindow();
+    infoWindow.setPosition({
+      lat: Number(lines.Orange[i].lat),
+      lng: Number(lines.Orange[i].lng)
+    })
     google.maps.event.addDomListener(orangeMarkers[i],'click', function setWindow() {
       infoWindow.setContent('oragnelife');
       infoWindow.open(map, orangeMarkers[i]);
@@ -115,6 +119,10 @@ function showRed(map)
     redMarkers[i].setMap(map);
     stationLocations[i] = new google.maps.LatLng(lines.Red[i].lat, lines.Red[i].lng);
     var infoWindow = new google.maps.InfoWindow();
+    infoWindow.setPosition({
+      lat: Number(lines.Red[i].lat),
+      lng: Number(lines.Red[i].lng)
+    })
     google.maps.event.addDomListener(redMarkers[i],'click', function setWindow() {
       infoWindow.setContent('woahdere');
       infoWindow.open(map, redMarkers[i]);
@@ -150,6 +158,10 @@ function showBlue(map)
     blueMarkers[i].setMap(map);
     stationLocations[i] = new google.maps.LatLng(lines.Blue[i].lat, lines.Blue[i].lng);
     var infoWindow = new google.maps.InfoWindow();
+    infoWindow.setPosition({
+      lat: Number(lines.Blue[i].lat),
+      lng: Number(lines.Blue[i].lng)
+    })
     google.maps.event.addDomListener(blueMarkers[i],'click', function setWindow() {
       infoWindow.setContent('hi');
       infoWindow.open(map, blueMarkers[i]);
