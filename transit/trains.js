@@ -90,7 +90,7 @@ function showOrange(map)
         console.log("E");
         infoWindow.setContent(marker.title);
         console.log("F");
-        infoWindow.open(map, marker.position);
+        infoWindow.open(map, marker);
         console.log("G");
       });
   }
@@ -135,7 +135,7 @@ function showRed(map)
         console.log("E");
         infoWindow.setContent(marker.title);
         console.log("F");
-        infoWindow.open(map, marker.position);
+        infoWindow.open(map, marker);
         console.log("G");
       });
   }
@@ -180,7 +180,7 @@ function showBlue(map)
         console.log("E");
         infoWindow.setContent(marker.title);
         console.log("F");
-        infoWindow.open(map, marker.position);
+        infoWindow.open(map, marker);
         console.log("G");
       });
     console.log("D");
