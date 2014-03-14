@@ -235,6 +235,7 @@ function createTable(stationName, parsedResponse) {
         }
         return toReturn;
       }
+    }
 
 
 
