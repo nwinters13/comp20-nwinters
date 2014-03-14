@@ -67,6 +67,7 @@ function showOrange(map)
 {
   console.log("IN ORGAN");
   var stationLocations = new Array(lines.Orange.length);
+  orangeinfoWindow = new Array(lines.Orange.length);
   orangeMarkers = new Array(lines.Orange.length);
   for(var i = 0; i < lines.Orange.length; i++){
     orangeMarkers[i] = new google.maps.Marker({
@@ -79,14 +80,14 @@ function showOrange(map)
     orangeMarkers[i].setMap(map);
     stationLocations[i] = new google.maps.LatLng(lines.Orange[i].lat, lines.Orange[i].lng);
 
-    var infoWindow = new google.maps.InfoWindow();
-    infoWindow.setPosition({
+    orangeinfoWindow[i] = new google.maps.InfoWindow();
+    orangeinfoWindow[i].setPosition({
       lat: Number(lines.Orange[i].lat),
       lng: Number(lines.Orange[i].lng)
     })
     google.maps.event.addDomListener(orangeMarkers[i],'click', function setWindow() {
-      infoWindow.setContent('oragnelife');
-      infoWindow.open(map, orangeMarkers[i]);
+      orangeinfoWindow[i].setContent('oragnelife');
+      orangeinfoWindow[i].open(map, orangeMarkers[i]);
       });
   }
   var lineDrawing = new google.maps.Polyline({
@@ -108,6 +109,7 @@ function showRed(map)
   console.log("IN RED");
   var stationLocations = new Array(lines.Red.length);
   redMarkers = new Array(lines.Red.length);
+  redinfoWindow = new Array(lines.Red.length);
   for(var i = 0; i < lines.Red.length; i++){
     var marker = new google.maps.Marker({
       icon: 'icon.png'
@@ -118,14 +120,14 @@ function showRed(map)
     });
     redMarkers[i].setMap(map);
     stationLocations[i] = new google.maps.LatLng(lines.Red[i].lat, lines.Red[i].lng);
-    var infoWindow = new google.maps.InfoWindow();
-    infoWindow.setPosition({
+    redinfoWindow[i] = new google.maps.InfoWindow();
+    redinfoWindow[i].setPosition({
       lat: Number(lines.Red[i].lat),
       lng: Number(lines.Red[i].lng)
     })
     google.maps.event.addDomListener(redMarkers[i],'click', function setWindow() {
-      infoWindow.setContent('woahdere');
-      infoWindow.open(map, redMarkers[i]);
+      redinfoWindow[i].setContent('woahdere');
+      redinfoWindow[i].open(map, redMarkers[i]);
       });
   }
   var lineDrawing = new google.maps.Polyline({
@@ -146,6 +148,7 @@ function showBlue(map)
 {
   console.log("IN BLUE");
   var stationLocations = new Array(lines.Blue.length);
+  var blueinfoWindow = new Array(lines.Blue.length);
   blueMarkers = new Array(lines.Blue.length);
   for(var i = 0; i < lines.Blue.length; i++){
     blueMarkers[i] = new google.maps.Marker({
@@ -157,14 +160,14 @@ function showBlue(map)
     });
     blueMarkers[i].setMap(map);
     stationLocations[i] = new google.maps.LatLng(lines.Blue[i].lat, lines.Blue[i].lng);
-    var infoWindow = new google.maps.InfoWindow();
-    infoWindow.setPosition({
+    blueinfoWindow[i] = new google.maps.InfoWindow();
+    blueinfoWindow[i].setPosition({
       lat: Number(lines.Blue[i].lat),
       lng: Number(lines.Blue[i].lng)
     })
     google.maps.event.addDomListener(blueMarkers[i],'click', function setWindow() {
-      infoWindow.setContent('hi');
-      infoWindow.open(map, blueMarkers[i]);
+      blueinfoWindow[i].setContent('hi');
+      blueinfoWindow[i].open(map, blueMarkers[i]);
       });
   }
   var lineDrawing = new google.maps.Polyline({
