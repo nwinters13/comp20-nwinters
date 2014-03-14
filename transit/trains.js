@@ -326,8 +326,8 @@ function calculateDistance(markers, myMarker)
   var closeDistance = 100000;
   for(var i = 0; i < markers.length; i++){
     console.log('loopin');
-    var stationLat = markers[i].lat;
-    var stationgLng = markers[i].lng;
+    var stationLat = markers[i].getPosition().lat;
+    var stationgLng = markers[i].getPosition().lng;
     var R = 3958.76;
     var dLat = (myLat - stationLat).toRad();
     var dLon = (myLng - stationgLng).toRad();
