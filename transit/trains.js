@@ -194,7 +194,8 @@ function showBlue(map, parsedResponse)
 
     infoWindows[i] = new google.maps.InfoWindow({
       position: stationLocations[i],
-      title: markers[i].title
+      title: markers[i].title,
+      maxWidth: 200
     });
 
     
