@@ -86,6 +86,7 @@ function showOrange(map)
       lng: Number(lines.Orange[i].lng)
     })
     google.maps.event.addDomListener(orangeMarkers[i],'click', function setWindow() {
+      console.log(i);
       orangeinfoWindow[i].setContent('oragnelife');
       orangeinfoWindow[i].open(map, orangeMarkers[i]);
       });
