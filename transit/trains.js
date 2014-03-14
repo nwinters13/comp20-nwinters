@@ -246,6 +246,7 @@ function createTable(stationName, parsedResponse) {
           tab.appendChild(row);
         }
         table.appendChild(tableTab);
+        return table;
 }
 
 
