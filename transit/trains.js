@@ -347,7 +347,7 @@ function calculateDistance(markers, myMarker)
       closest = i;
     }
   }
-  alert('The closest station to you is: ' + markers[i].title + ' at a distance of: ' + closeDistance);
+  alert('The closest station to you is: ' + markers[closest].title + ' at a distance of: ' + closeDistance);
 }
  
 
