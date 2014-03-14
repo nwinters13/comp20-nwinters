@@ -87,8 +87,11 @@ function showOrange(map)
     });
 
     google.maps.event.addDomListener(marker,'click', function setWindow() {
+        console.log("E");
         infoWindow.setContent(marker.title);
+        console.log("F");
         infoWindow.open(map, marker.position);
+        console.log("G");
       });
   }
   var lineDrawing = new google.maps.Polyline({
@@ -107,7 +110,7 @@ function showOrange(map)
  */
 function showRed(map)
 {
-  console.log("IN ORGAN");
+  console.log("IN RED");
   var stationLocations = new Array(lines.Red.length);
 
   for(var i = 0; i < lines.Red.length; i++){
@@ -129,14 +132,17 @@ function showRed(map)
     });
 
     google.maps.event.addDomListener(marker,'click', function setWindow() {
+        console.log("E");
         infoWindow.setContent(marker.title);
+        console.log("F");
         infoWindow.open(map, marker.position);
+        console.log("G");
       });
   }
   var lineDrawing = new google.maps.Polyline({
     path: stationLocations,
     geodesic: true,
-    strokeColor: '#ff6600',
+    strokeColor: '#ff0000',
     strokeWeight: 10,
   });
   lineDrawing.setMap(map);
@@ -149,7 +155,7 @@ function showRed(map)
  */
 function showBlue(map)
 {
-  console.log("IN ORGAN");
+  console.log("IN BLUE");
   var stationLocations = new Array(lines.Blue.length);
 
   for(var i = 0; i < lines.Blue.length; i++){
@@ -171,15 +177,18 @@ function showBlue(map)
     });
     console.log("C");
     google.maps.event.addDomListener(marker,'click', function setWindow() {
+        console.log("E");
         infoWindow.setContent(marker.title);
+        console.log("F");
         infoWindow.open(map, marker.position);
+        console.log("G");
       });
     console.log("D");
   }
   var lineDrawing = new google.maps.Polyline({
     path: stationLocations,
     geodesic: true,
-    strokeColor: '#ff6600',
+    strokeColor: '#0000ff',
     strokeWeight: 10,
   });
   lineDrawing.setMap(map);
