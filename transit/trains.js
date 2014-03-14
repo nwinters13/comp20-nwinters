@@ -132,7 +132,7 @@ function showRed(map)
       position: stationLocations[i],
       title: marker.title
     });
-    infowWindows.push(infoWindow);
+    infoWindows.push(infoWindow);
     google.maps.event.addDomListener(marker,'click', function setWindow() {
         console.log("E");
         infoWindow.setContent(marker.title);
@@ -159,7 +159,7 @@ function showBlue(map)
 {
   console.log("IN BLUE");
   var stationLocations = new Array(lines.Blue.length);
-  var infowWindows = new Array(lines.Blue.length);
+  var infoWindows = new Array(lines.Blue.length);
   for(var i = 0; i < lines.Blue.length; i++){
 
     stationLocations[i] = new google.maps.LatLng(lines.Blue[i].lat, lines.Blue[i].lng);
@@ -178,7 +178,7 @@ function showBlue(map)
       position: stationLocations[i],
       title: marker.title
     });
-    infowWindows.push(infoWindow);
+    infoWindows.push(infoWindow);
     console.log("C");
     google.maps.event.addDomListener(marker,'click', function setWindow() {
         console.log("E");
