@@ -234,6 +234,8 @@ function createTable(stationName, parsedResponse) {
                           parsedResponse['schedule'][i]['Destination'] + '   ' + 
                           parsedResponse['schedule'][i]['Predictions'][k]['Seconds'] + '</p>';
             }
+
+          }
         }        
    /*     var toReturn;
         for(var j = 0; j < content.length; j++){
@@ -241,7 +243,7 @@ function createTable(stationName, parsedResponse) {
         } */
                 return content;
       }
-    }
+    
 
 
 
