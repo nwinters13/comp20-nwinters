@@ -138,7 +138,7 @@ function showRed(map)
     google.maps.event.addDomListener(marker,'click', function setWindow() {
         console.log("E");
         infoWindow.setContent(marker.title);
-        console.log(marker.infoWindowIndexs);
+        console.log(marker.infoWindowIndex);
         infoWindows[marker.infoWindowIndex].open(map, marker);
         console.log("G");
       });
