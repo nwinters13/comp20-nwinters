@@ -139,9 +139,8 @@ function showRed(map)
     google.maps.event.addListener(markers[i],'click', function setWindow(inneri) {
       return function(){
         console.log("E");
-        infoWindow[inneri].close();
-        infoWindow[inneri].setContent(markers[inneri].title);
-        console.log(markers[inneri].infoWindowIndex);
+        infoWindows[inneri].close();
+        infoWindows[inneri].setContent(markers[inneri].title);
         infoWindows[inneri].open(map, markers[inneri]);
         console.log("G");
       }
