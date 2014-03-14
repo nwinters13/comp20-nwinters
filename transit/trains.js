@@ -29,6 +29,112 @@ function createMap()
     });
 }
 
+
+/*
+ * createStation gets the request from the json and then figures out which
+ *   line needs to be displayed
+ */
+function createStation(map)
+{
+  var request = new XMLHttpRequest();
+  request.open('GET', 
+              'http://mbtamap.herokuapp.com/mapper/rodeo.json', 
+               false);
+  request.send(null)
+  var response = request.responseText;
+  var parsedResponse = JSON.parse(response);
+  if(request.status == 500){
+    alert("Error: Could not retrieve data from server");
+    return;
+  }
+  buildStations(map);
+  if(parsedResponse['line'] == "orange")
+    showOrange(map, parsedResponse);
+  else if(parsedResponse['line'] == "blue")
+    showBlue(map, parsedResponse);
+  else if(parsedResponse['line'] == "red")
+    showRed(map, parsedResponse);
+}
+
+/*
+ * showOrange loops through the orange array within the lines object
+ *   and puts on the trains information on the map
+ */
+function showOrange(map, parsedResponse)
+{
+  var stationLocations = new Array(lines.Orange.length);
+  var markers = new Array(lines.Orange.length);
+  var infoWindows = new Array(lines.Orange.length);
+  for(var i = 0; i < lines.Orange.length; i++){
+
+    stationLocations[i] = new google.maps.LatLng(lines.Orange[i].lat, lines.Orange[i].lng);
+    
+    markers[i] = new google.maps.Marker({
+      icon: 'icon.png',
+      position: stationLocations[i],
+      title: lines.Orange[i].stationInfo,
+      infoWindowIndex: i
+    })
+
+    markers[i].setMap(map);
+
+
+    infoWindows[i] = new google.maps.InfoWindow({
+      position: stationLocations[i],
+      title: markers[i].title
+    });
+
+    
+    
+    google.maps.event.addListener(markers[i],'click', function setWindow(inneri) {
+      return function(){
+        infoWindows[inneri].close();
+        infoWindows[inneri].setContent(createTable(markers[inneri].title, parsedResponse));
+        infoWindows[inneri].open(map, markers[inneri]);
+      }
+    }(i));
+  }
+  calculateDistance(markers, myMarker);
+  var lineDrawing = new google.maps.Polyline({
+    path: stationLocations,
+    geodesic: true,
+    strokeColor: '#ff6600',
+    strokeWeight: 10,
+  });
+  lineDrawing.setMap(map);
+}
+
+
+/*
+ * createMap finds my location and augments the map options then
+ * places me on the map and calls the station loader
+ */
+function createMap()
+{
+    navigator.geolocation.getCurrentPosition(function getPosition(position){
+      myLat = position.coords.latitude;
+      myLng = position.coords.longitude;
+    
+      var mapOptions = {
+        zoom: 10,
+        center: new google.maps.LatLng(myLat, myLng)
+      }; 
+      var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+      myMarker = new google.maps.Marker({
+        title: "You are here",
+        position: new google.maps.LatLng(myLat, myLng)
+      });
+      myMarker.setMap(map); 
+      var infoWindow = new google.maps.InfoWindow();
+      google.maps.event.addDomListener(myMarker,'click', function setWindow() {
+        infoWindow.setContent("I am here at: " + myLat + " " + myLng);
+        infoWindow.open(map, myMarker);
+      });
+      createStation(map);
+
+    });
+}
+
 //google.maps.event.addDomListener(window, 'load', createMap);
 
 
@@ -161,6 +267,12 @@ function showRed(map, parsedResponse)
 
 }
 
+
+/*
+ * drawRed
+ * draws the polylines specified for the red line
+ * because multiples need to be drawn
+ */
 function drawRed(stationLocations, map){
     var lineDrawing = new google.maps.Polyline({
     path: stationLocations,
@@ -221,6 +333,12 @@ function showBlue(map, parsedResponse)
   lineDrawing.setMap(map);
 }
 
+
+/*
+ * createTable
+ * generates the text to be returned to the info window
+ *  it isn't really a table but more of a pseudo-table
+ */
 function createTable(stationName, parsedResponse) {
 
 
@@ -240,7 +358,12 @@ function createTable(stationName, parsedResponse) {
     
 
 
-
+/*
+ * buildStations
+ *  reads in this ugly string and separates it into the arrays specified in the lines object
+ *  THANKS to Kenny here for his help on organizing this stringas well as TA Nathan Tarrh for helping me
+ *  figure out how to store this
+ */
 function buildStations(map)
 {
   str = 'Blue,Bowdoin,42.361365,-71.062037*' +
@@ -320,7 +443,10 @@ function buildStations(map)
 }
 
 
-
+/*
+ * calculate distances
+ *  figures out the closest marker between my marker and an array of markers
+ */
 function calculateDistance(markers, myMarker)
 {
   var closest = 0;
@@ -353,7 +479,7 @@ function calculateDistance(markers, myMarker)
   alert('The closest station to you is: ' + markers[closest].title + ' at a distance of: ' + closeDistance);
 }
  
-
+// Gets the radians
 Number.prototype.toRad = function() {
    return this * Math.PI / 180;
 }
