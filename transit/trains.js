@@ -80,7 +80,7 @@ function showOrange(map)
 
     var infoWindow = new google.maps.InfoWindow();
     google.maps.event.addDomListener(marker,'click', function setWindow() {
-      infoWindow.setContent("I am here at: " + myLat + " " + myLng);
+      infoWindow.setContent(lines.Orange[i].stationInfo);
       infoWindow.open(map, marker);
       });
   }
@@ -114,7 +114,7 @@ function showRed(map)
     stationLocations[i] = new google.maps.LatLng(lines.Red[i].lat, lines.Red[i].lng);
     var infoWindow = new google.maps.InfoWindow();
     google.maps.event.addDomListener(marker,'click', function setWindow() {
-      infoWindow.setContent("I am here at: " + myLat + " " + myLng);
+      infoWindow.setContent(lines.Red[i].stationInfo);
       infoWindow.open(map, marker);
       });
   }
@@ -148,7 +148,7 @@ function showBlue(map)
     stationLocations[i] = new google.maps.LatLng(lines.Blue[i].lat, lines.Blue[i].lng);
     var infoWindow = new google.maps.InfoWindow();
     google.maps.event.addDomListener(marker,'click', function setWindow() {
-      infoWindow.setContent("I am here at: " + myLat + " " + myLng);
+      infoWindow.setContent(lines.Blue[i].stationInfo);
       infoWindow.open(map, marker);
       });
   }
