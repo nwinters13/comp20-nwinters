@@ -321,10 +321,11 @@ function buildStations(map)
 
 function calculateDistance(markers, myMarker)
 {
+  console.log('in calcD');
   var closest = 0;
   var closeDistance = 100000;
   for(var i = 0; i < markers.length; i++){
-
+    console.log('loopin');
     var stationLat = markers[i].lat;
     var stationgLng = markers[i].lng;
     var R = 3958.76;
@@ -336,6 +337,7 @@ function calculateDistance(markers, myMarker)
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
     var d = R * c;    
     if(d < closeDistance){
+      console.log('found a new buddy');
       closeDistance = d;
       closest = i;
     }
