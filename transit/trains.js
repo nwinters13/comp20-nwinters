@@ -87,8 +87,8 @@ function showOrange(map)
       title: "this is hard"
     })
       google.maps.event.addDomListener(orangeMarkers[i],'click', function setWindow() {
-        infoWindow.setContent(orangeMarkers[i].title);
-        infoWindow.open(map, orangeMarkers[i]);
+        infoWindow.setContent("here i am");
+        infoWindow.open(map, orangeMarkers[i - 1]);
       });
   }
   var lineDrawing = new google.maps.Polyline({
