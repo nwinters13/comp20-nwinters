@@ -218,13 +218,13 @@ function showBlue(map, parsedResponse)
 
 function createTable(stationName, parsedResponse) {
 
-        var table = createElement('table');
-        var tableTab = createElement('tbody');
+        var table = document.createElement('table');
+        var tableTab = document.createElement('tbody');
         var row, col;
         for (i = 0; i < parsedResponse["schedule"].length; i++) {
-          row = createElement('tr');
+          row = document.createElement('tr');
           for(var j = 0; j < 4; j++){
-            col = createElement('td');
+            col = document.createElement('td');
             if((j % 4) == 0){
               col.appendChild(parsedResponse['line']);
             }
