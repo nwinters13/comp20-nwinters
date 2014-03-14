@@ -113,33 +113,36 @@ function showRed(map)
 {
   console.log("IN RED");
   var stationLocations = new Array(lines.Red.length);
+  var markers = new Array(lines.Red.length);
   var infoWindows = new Array(lines.Red.length);
   for(var i = 0; i < lines.Red.length; i++){
 
     stationLocations[i] = new google.maps.LatLng(lines.Red[i].lat, lines.Red[i].lng);
     
-    var marker = new google.maps.Marker({
+    markers[i] = new google.maps.Marker({
       icon: 'icon.png',
       position: stationLocations[i],
       title: lines.Red[i].stationInfo,
       infoWindowIndex: i
     })
 
-    marker.setMap(map);
+    markers[i].setMap(map);
 
 
-    var infoWindow = new google.maps.InfoWindow({
+    infoWindow[i] = new google.maps.InfoWindow({
       position: stationLocations[i],
       title: marker.title
     });
 
-    infoWindows.push(infoWindow);
     
-    google.maps.event.addDomListener(marker,'click', function setWindow() {
+    
+    google.maps.event.addListener(markers[i],'click', function setWindow(inneri) {
+      return function(){
         console.log("E");
-        infoWindow.setContent(marker.title);
+        infoWindow[inneri].close();
+        infoWindow[inneri].setContent(marker[inneri].title);
         console.log(marker.infoWindowIndex);
-        infoWindows[marker.infoWindowIndex].open(map, marker);
+        infoWindows[inneri].open(map, markers[inneri]);
         console.log("G");
       });
   }
