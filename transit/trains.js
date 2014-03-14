@@ -323,11 +323,9 @@ function buildStations(map)
 
 function calculateDistance(markers, myMarker)
 {
-  console.log('in calc');
   var closest = 0;
   var closeDistance = 100000;
   for(var i = 0; i < markers.length; i++){
-    console.log('loopin');
     var lat2 = markers[i].getPosition().k;
     var lon2 = markers[i].getPosition().A;
     var lat1 = myLat;
@@ -352,7 +350,6 @@ function calculateDistance(markers, myMarker)
       closest = i;
     }
   }
-  console.log('alertin');
   alert('The closest station to you is: ' + markers[closest].title + ' at a distance of: ' + closeDistance);
 }
  
