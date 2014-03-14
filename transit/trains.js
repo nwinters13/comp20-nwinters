@@ -149,8 +149,8 @@ function showRed(map)
       }
     }(i));
   }
-  var largestPath = new Array(13);
-  var rightPath = new Array(5);
+  var largestPath = new Array(17);
+  var rightPath = new Array(6);
 
   for(var i = 0; i < lines.Red.length; i++){
     if(i <= 16)
