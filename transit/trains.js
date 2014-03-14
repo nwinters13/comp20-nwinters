@@ -159,7 +159,7 @@ function showRed(map)
       rightPath[i - 16] = (stationLocations[i]);
   }
   rightPath[0] = stationLocations[12];
-//  drawRed(largestPath, map);
+  drawRed(largestPath, map);
   drawRed(rightPath, map);
 
 }
