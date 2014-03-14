@@ -159,8 +159,8 @@ function showRed(map)
       rightPath[i - 16] = (stationLocations[i]);
   }
   rightPath[0] = stationLocations[12];
-  drawRed(largestPath);
-  drawRed(rightPath);
+  drawRed(largestPath, map);
+  drawRed(rightPath, map);
 
 }
 
@@ -171,8 +171,6 @@ function drawRed(stationLocations, map){
     strokeColor: '#ff0000',
     strokeWeight: 10,
   });
-
-
   lineDrawing.setMap(map);
 }
 
