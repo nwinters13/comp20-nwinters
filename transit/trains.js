@@ -151,11 +151,14 @@ function showRed(map)
   }
   var largestPath = new Array(13);
   var rightPath = new Array(5);
+
   for(var i = 0; i < lines.Red.length; i++){
     if(i <= 16)
       largestPath.push(stationLocations[i]);
-    else rightPath.push(stationLocations[i]);
+    else if(i > 16) 
+      rightPath.push(stationLocations[i - 16]);
   }
+  rightPath[0] = stationLocations[12];
   drawRed(largestPath);
   drawRed(rightPath);
 
