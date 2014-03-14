@@ -155,13 +155,13 @@ function showBlue(map)
   for(var i = 0; i < lines.Blue.length; i++){
 
     stationLocations[i] = new google.maps.LatLng(lines.Blue[i].lat, lines.Blue[i].lng);
-    
+    console.log("A");
     var marker = new google.maps.Marker({
       icon: 'icon.png',
       position: stationLocations[i],
       title: lines.Blue[i].stationInfo
     })
-
+    console.log("B");
     marker.setMap(map);
 
 
@@ -169,11 +169,12 @@ function showBlue(map)
       position: stationLocations[i],
       title: marker.title
     });
-
+    console.log("C");
     google.maps.event.addDomListener(marker,'click', function setWindow() {
         infoWindow.setContent(marker.title);
         infoWindow.open(map, marker.position);
       });
+    console.log("D");
   }
   var lineDrawing = new google.maps.Polyline({
     path: stationLocations,
