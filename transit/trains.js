@@ -218,11 +218,23 @@ function showBlue(map, parsedResponse)
 
 function createTable(stationName, parsedResponse) {
 
-        var table = document.createElement('table');
-        var tableTab = document.createElement('tbody');
-        var row, col;
-        for (i = 0; i < parsedResponse["schedule"].length; i++) {
-          row = document.createElement('tr');
+      //  var table = document.createElement('table');
+      //  var tableTab = document.createElement('tbody');
+        var content = new Array(parsedResponse["schedule"].length);
+        for (var i = 0; i < parsedResponse["schedule"].length; i++) {
+          content[i] = '<p>parsedResponse['line']    parsedResponse['Schedule'][i]['TripID']   parsedResponse['Schedule'][i]['Destination']   ' +
+                          'parsedResponse['Schedule'][i]['Predictions'][k]['Seconds']</p>' 
+        }        
+        var toReturn;
+        for(var j = 0; j < content.length; j++){
+          toReturn = toReturn + content[j];
+        }
+        return toReturn;
+      }
+
+
+
+        /*  row = document.createElement('tr');
           for(var j = 0; j < 4; j++){
             col = document.createElement('td');
             if((j % 4) == 0){
@@ -245,8 +257,10 @@ function createTable(stationName, parsedResponse) {
           }
           tab.appendChild(row);
         }
-        table.appendChild(tableTab);
+        table.appendChild(tableTab);*/
         return table;
+
+
 }
 
 
