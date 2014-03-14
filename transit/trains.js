@@ -195,7 +195,7 @@ function showBlue(map, parsedResponse)
     infoWindows[i] = new google.maps.InfoWindow({
       position: stationLocations[i],
       title: markers[i].title,
-      maxWidth: 200
+      maxWidth: 300
     });
 
     
@@ -238,43 +238,9 @@ function createTable(stationName, parsedResponse) {
 
           }
         }        
-   /*     var toReturn;
-        for(var j = 0; j < content.length; j++){
-          toReturn = toReturn + content[j];
-        } */
                 return content;
       }
     
-
-
-
-        /*  row = document.createElement('tr');
-          for(var j = 0; j < 4; j++){
-            col = document.createElement('td');
-            if((j % 4) == 0){
-              col.appendChild(parsedResponse['line']);
-            }
-            else if((j % 4) == 1){
-              col.appendChild(parsedResponse['Schedule'][i]['TripID']);
-            }
-            else if((j % 4) == 2){
-              col.appendChild(parsedResponse['Schedule'][i]['Destination']);
-            }
-            else if((j % 4) == 3){
-              for(var k = 0; k < parsedResponse['Schedule'][i]['Predictions'].length; k++){
-                if(parsedResponse['Schedule'][i]['Predictions'][k]['Stop'] == stationName){
-                  col.appendChild(parsedResponse['Schedule'][i]['Predictions'][k]['Seconds'])
-                }
-              }
-            }
-            row.appendChild(col);
-          }
-          tab.appendChild(row);
-        }
-        table.appendChild(tableTab);
-        return table;
-}
-*/
 
 
 
