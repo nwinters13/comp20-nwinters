@@ -333,6 +333,7 @@ function calculateDistance(markers, myMarker)
     var R = 3958.76;
     console.log(myLat);
     console.log(stationLat);
+    console.log('***');
     var dLat = (myLat - stationLat).toRad();
     var dLon = (myLng - stationgLng).toRad();
     var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
