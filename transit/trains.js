@@ -90,7 +90,7 @@ function showOrange(map, parsedResponse)
     google.maps.event.addListener(markers[i],'click', function setWindow(inneri) {
       return function(){
         infoWindows[inneri].close();
-        infoWindows[inneri].setContent(markers[inneri].title);
+        infoWindows[inneri].setContent(createTable(markers[inneri].title, parsedResponse));
         infoWindows[inneri].open(map, markers[inneri]);
       }
     }(i));
@@ -138,7 +138,7 @@ function showRed(map, parsedResponse)
     google.maps.event.addListener(markers[i],'click', function setWindow(inneri) {
       return function(){
         infoWindows[inneri].close();
-        infoWindows[inneri].setContent(markers[inneri].title);
+        infoWindows[inneri].setContent(createTable(markers[inneri].title, parsedResponse));
         infoWindows[inneri].open(map, markers[inneri]);
       }
     }(i));
