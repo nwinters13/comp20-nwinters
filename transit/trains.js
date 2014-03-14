@@ -129,7 +129,7 @@ function showRed(map)
     markers[i].setMap(map);
 
 
-    infoWindow[i] = new google.maps.InfoWindow({
+    infoWindows[i] = new google.maps.InfoWindow({
       position: stationLocations[i],
       title: marker.title
     });
