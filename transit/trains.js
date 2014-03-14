@@ -258,11 +258,11 @@ function createTable(stationName, parsedResponse) {
           }
           tab.appendChild(row);
         }
-        table.appendChild(tableTab);*/
+        table.appendChild(tableTab);
         return table;
-
-
 }
+*/
+
 
 
 function buildStations(map)
