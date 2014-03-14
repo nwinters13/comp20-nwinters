@@ -223,8 +223,8 @@ function createTable(stationName, parsedResponse) {
         var content = new Array(parsedResponse["schedule"].length);
         for (var i = 0; i < parsedResponse["schedule"].length; i++) {
           content[i] = '<p>' + parsedResponse['line'] + '   ' + parsedResponse['Schedule'][i]['TripID'] + '   ' + 
-                          parsedResponse['Schedule'][i]['Destination'] + '   ' + 
-                          parsedResponse['Schedule'][i]['Predictions'][k]['Seconds'] + '</p>';
+                          parsedResponse['schedule'][i]['Destination'] + '   ' + 
+                          parsedResponse['schedule'][i]['Predictions'][k]['Seconds'] + '</p>';
         }        
         var toReturn;
         for(var j = 0; j < content.length; j++){
