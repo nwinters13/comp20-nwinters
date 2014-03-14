@@ -161,6 +161,12 @@ function showRed(map, parsedResponse)
 
 }
 
+
+/*
+ * drawRed
+ * draws the polylines specified for the red line
+ * because multiples need to be drawn
+ */
 function drawRed(stationLocations, map){
     var lineDrawing = new google.maps.Polyline({
     path: stationLocations,
@@ -221,6 +227,12 @@ function showBlue(map, parsedResponse)
   lineDrawing.setMap(map);
 }
 
+
+/*
+ * createTable
+ * generates the text to be returned to the info window
+ *  it isn't really a table but more of a pseudo-table
+ */
 function createTable(stationName, parsedResponse) {
 
 
@@ -240,7 +252,12 @@ function createTable(stationName, parsedResponse) {
     
 
 
-
+/*
+ * buildStations
+ *  reads in this ugly string and separates it into the arrays specified in the lines object
+ *  THANKS to Kenny here for his help on organizing this stringas well as TA Nathan Tarrh for helping me
+ *  figure out how to store this
+ */
 function buildStations(map)
 {
   str = 'Blue,Bowdoin,42.361365,-71.062037*' +
@@ -320,7 +337,10 @@ function buildStations(map)
 }
 
 
-
+/*
+ * calculate distances
+ *  figures out the closest marker between my marker and an array of markers
+ */
 function calculateDistance(markers, myMarker)
 {
   var closest = 0;
@@ -353,7 +373,7 @@ function calculateDistance(markers, myMarker)
   alert('The closest station to you is: ' + markers[closest].title + ' at a distance of: ' + closeDistance);
 }
  
-
+// Gets the radians
 Number.prototype.toRad = function() {
    return this * Math.PI / 180;
 }
