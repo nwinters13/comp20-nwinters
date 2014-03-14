@@ -144,7 +144,8 @@ function showRed(map)
         console.log(marker.infoWindowIndex);
         infoWindows[inneri].open(map, markers[inneri]);
         console.log("G");
-      });
+      }
+    }(i));
   }
   var lineDrawing = new google.maps.Polyline({
     path: stationLocations,
@@ -254,7 +255,7 @@ function buildStations(map)
     'Red,Shawmut,42.29312583,-71.06573796000001*' +
     'Red,Ashmont,42.284652,-71.06448899999999*' +
     'Red,North Quincy,42.275275,-71.029583*' +
-    'Red,Wollaston,42.2665139,-71.0203369*'
+    'Red,Wollaston,42.2665139,-71.0203369*' +
     'Red,Quincy Center,42.251809,-71.005409*' +
     'Red,Quincy Adams,42.233391,-71.007153*' +
     'Red,Braintree,42.2078543,-71.0011385';
