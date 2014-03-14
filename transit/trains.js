@@ -290,7 +290,7 @@ function buildStations(map)
 
    var splitString = str.split("*");
    
-   for (var i = splitString.length - 1; i >= 0; i--) {
+   for (var i = 0; i < splitString.length; i++) {
         var lineSplit = splitString[i].split(",");
         var lineInfo = {stationInfo: lineSplit[1],
                         lat: (lineSplit[2]),
