@@ -69,7 +69,7 @@ function showOrange(map)
   var stationLocations = new Array(lines.Orange.length);
   for(var i = 0; i < lines.Orange.length; i++){
     var marker = new google.maps.Marker({
-      icon: 'mbtaOrange.png'
+      icon: 'icon.png'
     })
     marker.setPosition({
       lat: Number(lines.Orange[i].lat),
@@ -77,6 +77,12 @@ function showOrange(map)
     })
     marker.setMap(map);
     stationLocations[i] = new google.maps.LatLng(lines.Orange[i].lat, lines.Orange[i].lng);
+
+    var infoWindow = new google.maps.InfoWindow();
+    google.maps.event.addDomListener(marker,'click', function setWindow() {
+      infoWindow.setContent("I am here at: " + myLat + " " + myLng);
+      infoWindow.open(map, marker);
+      });
   }
   var lineDrawing = new google.maps.Polyline({
     path: stationLocations,
@@ -98,7 +104,7 @@ function showRed(map)
   var stationLocations = new Array(lines.Red.length);
   for(var i = 0; i < lines.Red.length; i++){
     var marker = new google.maps.Marker({
-      icon: 'mbtaRed.png'
+      icon: 'icon.png'
     })
     marker.setPosition({
       lat: Number(lines.Red[i].lat),
@@ -108,6 +114,11 @@ function showRed(map)
     console.log(marker.lng);
     marker.setMap(map);
     stationLocations[i] = new google.maps.LatLng(lines.Red[i].lat, lines.Red[i].lng);
+    var infoWindow = new google.maps.InfoWindow();
+    google.maps.event.addDomListener(marker,'click', function setWindow() {
+      infoWindow.setContent("I am here at: " + myLat + " " + myLng);
+      infoWindow.open(map, marker);
+      });
   }
   var lineDrawing = new google.maps.Polyline({
     path: stationLocations,
@@ -129,7 +140,7 @@ function showBlue(map)
   var stationLocations = new Array(lines.Blue.length);
   for(var i = 0; i < lines.Blue.length; i++){
     var marker = new google.maps.Marker({
-      icon: 'mbtaBlue.png',
+      icon: 'icon.png',
     });
     marker.setPosition({
       lat: Number(lines.Blue[i].lat),
@@ -139,6 +150,11 @@ function showBlue(map)
     console.log(marker.lng);
     marker.setMap(map);
     stationLocations[i] = new google.maps.LatLng(lines.Blue[i].lat, lines.Blue[i].lng);
+    var infoWindow = new google.maps.InfoWindow();
+    google.maps.event.addDomListener(marker,'click', function setWindow() {
+      infoWindow.setContent("I am here at: " + myLat + " " + myLng);
+      infoWindow.open(map, marker);
+      });
   }
   var lineDrawing = new google.maps.Polyline({
     path: stationLocations,
