@@ -330,7 +330,7 @@ function calculateDistance(markers, myMarker)
     console.log('loopin');
     var stationLat = markers[i].getPosition().k;
     var stationgLng = markers[i].getPosition().a;
-    var R = 3958.76;
+    var R = 6371;
     console.log(myLat);
     console.log(stationLat);
     console.log('***');
@@ -340,7 +340,8 @@ function calculateDistance(markers, myMarker)
               Math.cos(stationLat.toRad()) * Math.cos(myLat.toRad()) * 
               Math.sin(dLon/2) * Math.sin(dLon/2);
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-    var d = R * c;    
+    var d = R * c;  
+    d = d / 1.60394  
     console.log(d)
     if(d < closeDistance){
       console.log('found a new buddy');
