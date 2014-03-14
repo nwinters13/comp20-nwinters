@@ -14,13 +14,13 @@ function createMap()
         center: new google.maps.LatLng(myLat, myLng)
       }; 
       var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-      marker = new google.maps.Marker({
+      myMarker = new google.maps.Marker({
         title: "You are here",
         position: mapOptions.center
       });
-      marker.setMap(map); 
+      myMarker.setMap(map); 
       var infoWindow = new google.maps.InfoWindow();
-      google.maps.event.addDomListener(marker,'click', function setWindow() {
+      google.maps.event.addDomListener(myMarker,'click', function setWindow() {
         infoWindow.setContent("I am here at: " + myLat + " " + myLng);
         infoWindow.open(map, marker);
       });
@@ -110,8 +110,6 @@ function showRed(map)
       lat: Number(lines.Red[i].lat),
       lng: Number(lines.Red[i].lng),
     });
-    console.log(marker.lat);
-    console.log(marker.lng);
     marker.setMap(map);
     stationLocations[i] = new google.maps.LatLng(lines.Red[i].lat, lines.Red[i].lng);
     var infoWindow = new google.maps.InfoWindow();
@@ -146,8 +144,6 @@ function showBlue(map)
       lat: Number(lines.Blue[i].lat),
       lng: Number(lines.Blue[i].lng),
     });
-    console.log(marker.lat);
-    console.log(marker.lng);
     marker.setMap(map);
     stationLocations[i] = new google.maps.LatLng(lines.Blue[i].lat, lines.Blue[i].lng);
     var infoWindow = new google.maps.InfoWindow();
