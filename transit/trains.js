@@ -132,11 +132,13 @@ function showRed(map)
       position: stationLocations[i],
       title: marker.title
     });
+
     infoWindows.push(infoWindow);
+    
     google.maps.event.addDomListener(marker,'click', function setWindow() {
         console.log("E");
         infoWindow.setContent(marker.title);
-        console.log("F");
+        console.log(marker.infoWindowIndexs);
         infoWindows[marker.infoWindowIndex].open(map, marker);
         console.log("G");
       });
