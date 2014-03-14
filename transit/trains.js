@@ -43,27 +43,25 @@ function createStation(map)
                false);
   request.send(null)
   var response = request.responseText;
-  console.log(response);
   var parsedResponse = JSON.parse(response);
-  console.log(parsedResponse['line']);
   if(request.status == 500){
     alert("Error: Could not retrieve data from server");
     return;
   }
   buildStations(map);
   if(parsedResponse['line'] == "orange")
-    showOrange(map);
+    showOrange(map, parsedResponse);
   else if(parsedResponse['line'] == "blue")
-    showBlue(map);
+    showBlue(map, parsedResponse);
   else if(parsedResponse['line'] == "red")
-    showRed(map);
+    showRed(map, parsedResponse);
 }
 
 /*
  * showOrange loops through the orange array within the lines object
  *   and puts on the trains information on the map
  */
-function showOrange(map)
+function showOrange(map, parsedResponse)
 {
   var stationLocations = new Array(lines.Orange.length);
   var markers = new Array(lines.Orange.length);
@@ -91,11 +89,9 @@ function showOrange(map)
     
     google.maps.event.addListener(markers[i],'click', function setWindow(inneri) {
       return function(){
-        console.log("E");
         infoWindows[inneri].close();
         infoWindows[inneri].setContent(markers[inneri].title);
         infoWindows[inneri].open(map, markers[inneri]);
-        console.log("G");
       }
     }(i));
   }
@@ -113,7 +109,7 @@ function showOrange(map)
  * showRed loops through the orange array within the lines object
  *   and puts on the trains information on the map
  */
-function showRed(map)
+function showRed(map, parsedResponse)
 {
   var stationLocations = new Array(lines.Red.length);
   var markers = new Array(lines.Red.length);
@@ -141,11 +137,9 @@ function showRed(map)
     
     google.maps.event.addListener(markers[i],'click', function setWindow(inneri) {
       return function(){
-        console.log("E");
         infoWindows[inneri].close();
         infoWindows[inneri].setContent(markers[inneri].title);
         infoWindows[inneri].open(map, markers[inneri]);
-        console.log("G");
       }
     }(i));
   }
@@ -179,7 +173,7 @@ function drawRed(stationLocations, map){
  * showBlue loops through the orange array within the lines object
  *   and puts on the trains information on the map
  */
-function showBlue(map)
+function showBlue(map, parsedResponse)
 {
   var stationLocations = new Array(lines.Blue.length);
   var markers = new Array(lines.Blue.length);
@@ -207,11 +201,9 @@ function showBlue(map)
     
     google.maps.event.addListener(markers[i],'click', function setWindow(inneri) {
       return function(){
-        console.log("E");
         infoWindows[inneri].close();
-        infoWindows[inneri].setContent(markers[inneri].title);
+        infoWindows[inneri].setContent(createTable(markers[inneri].title, parsedResponse));
         infoWindows[inneri].open(map, markers[inneri]);
-        console.log("G");
       }
     }(i));
   }
@@ -224,6 +216,37 @@ function showBlue(map)
   lineDrawing.setMap(map);
 }
 
+function createTable(stationName, parsedResponse) {
+
+        var table = createElement('table');
+        var tableTab = createElement('tbody');
+        var row, col;
+        for (i = 0; i < parsedResponse["schedule"].length; i++) {
+          row = createElement('tr');
+          for(var j = 0; j < 4; j++){
+            col = createElement('td');
+            if((j % 4) == 0){
+              col.appendChild(parsedResponse['line']);
+            }
+            else if((j % 4) == 1){
+              col.appendChild(parsedResponse['Schedule'][i]['TripID']);
+            }
+            else if((j % 4) == 2){
+              col.appendChild(parsedResponse['Schedule'][i]['Destination']);
+            }
+            else if((j % 4) == 3){
+              for(var k = 0; k < parsedResponse['Schedule'][i]['Predictions'].length; k++){
+                if(parsedResponse['Schedule'][i]['Predictions'][k]['Stop'] == stationName){
+                  col.appendChild(parsedResponse['Schedule'][i]['Predictions'][k]['Seconds'])
+                }
+              }
+            }
+            row.appendChild(col);
+          }
+          tab.appendChild(row);
+        }
+        table.appendChild(tableTab);
+}
 
 
 function buildStations(map)
