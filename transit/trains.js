@@ -22,7 +22,7 @@ function createMap()
       var infoWindow = new google.maps.InfoWindow();
       google.maps.event.addDomListener(myMarker,'click', function setWindow() {
         infoWindow.setContent("I am here at: " + myLat + " " + myLng);
-        infoWindow.open(map, marker);
+        infoWindow.open(map, myMarker);
       });
       createStation(map);
     });
