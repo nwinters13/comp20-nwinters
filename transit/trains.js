@@ -67,7 +67,7 @@ function showOrange(map)
 {
   console.log("IN ORGAN");
   var stationLocations = new Array(lines.Orange.length);
-
+  var infoWindows = new Array(lines.Orange.length);
   for(var i = 0; i < lines.Orange.length; i++){
 
     stationLocations[i] = new google.maps.LatLng(lines.Orange[i].lat, lines.Orange[i].lng);
@@ -75,7 +75,8 @@ function showOrange(map)
     var marker = new google.maps.Marker({
       icon: 'icon.png',
       position: stationLocations[i],
-      title: lines.Orange[i].stationInfo
+      title: lines.Orange[i].stationInfo,
+      infoWindowIndex: i
     })
 
     marker.setMap(map);
@@ -85,12 +86,12 @@ function showOrange(map)
       position: stationLocations[i],
       title: marker.title
     });
-
+    infoWindows.push(infoWindow);
     google.maps.event.addDomListener(marker,'click', function setWindow() {
         console.log("E");
         infoWindow.setContent(marker.title);
         console.log("F");
-        infoWindow.open(map, marker);
+        infoWindows[marker.infoWindowIndex].open(map, marker);
         console.log("G");
       });
   }
@@ -112,7 +113,7 @@ function showRed(map)
 {
   console.log("IN RED");
   var stationLocations = new Array(lines.Red.length);
-
+  var infoWindows = new Array(lines.Red.length);
   for(var i = 0; i < lines.Red.length; i++){
 
     stationLocations[i] = new google.maps.LatLng(lines.Red[i].lat, lines.Red[i].lng);
@@ -120,7 +121,8 @@ function showRed(map)
     var marker = new google.maps.Marker({
       icon: 'icon.png',
       position: stationLocations[i],
-      title: lines.Red[i].stationInfo
+      title: lines.Red[i].stationInfo,
+      infoWindowIndex: i
     })
 
     marker.setMap(map);
@@ -130,12 +132,12 @@ function showRed(map)
       position: stationLocations[i],
       title: marker.title
     });
-
+    infowWindows.push(infoWindow);
     google.maps.event.addDomListener(marker,'click', function setWindow() {
         console.log("E");
         infoWindow.setContent(marker.title);
         console.log("F");
-        infoWindow.open(map, marker);
+        infoWindows[marker.infoWindowIndex].open(map, marker);
         console.log("G");
       });
   }
@@ -157,7 +159,7 @@ function showBlue(map)
 {
   console.log("IN BLUE");
   var stationLocations = new Array(lines.Blue.length);
-
+  var infowWindows = new Array(lines.Blue.length);
   for(var i = 0; i < lines.Blue.length; i++){
 
     stationLocations[i] = new google.maps.LatLng(lines.Blue[i].lat, lines.Blue[i].lng);
@@ -165,7 +167,8 @@ function showBlue(map)
     var marker = new google.maps.Marker({
       icon: 'icon.png',
       position: stationLocations[i],
-      title: lines.Blue[i].stationInfo
+      title: lines.Blue[i].stationInfo,
+      infoWindowIndex: i
     })
     console.log("B");
     marker.setMap(map);
@@ -175,12 +178,12 @@ function showBlue(map)
       position: stationLocations[i],
       title: marker.title
     });
+    infowWindows.push(infoWindow);
     console.log("C");
     google.maps.event.addDomListener(marker,'click', function setWindow() {
         console.log("E");
-        infoWindow.setContent(marker.title);
         console.log("F");
-        infoWindow.open(map, marker);
+        infoWindows[marker.infoWindowIndex].open(map, marker);
         console.log("G");
       });
     console.log("D");
