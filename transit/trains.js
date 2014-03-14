@@ -67,7 +67,7 @@ function showOrange(map)
 {
   console.log("IN ORGAN");
   var stationLocations = new Array(lines.Orange.length);
-  orangeinfoWindow = new Array(lines.Orange.length);
+//  orangeinfoWindow = new Array(lines.Orange.length);
   orangeMarkers = new Array(lines.Orange.length);
   for(var i = 0; i < lines.Orange.length; i++){
     orangeMarkers[i] = new google.maps.Marker({
@@ -76,20 +76,22 @@ function showOrange(map)
     orangeMarkers[i].setPosition({
       lat: Number(lines.Orange[i].lat),
       lng: Number(lines.Orange[i].lng),
+      title: "this is too hard"
     })
     orangeMarkers[i].setMap(map);
     stationLocations[i] = new google.maps.LatLng(lines.Orange[i].lat, lines.Orange[i].lng);
 
-    orangeinfoWindow[i] = new google.maps.InfoWindow();
-    orangeinfoWindow[i].setPosition({
+//    orangeinfoWindow[i] = new google.maps.InfoWindow();
+/*    orangeinfoWindow[i].setPosition({
       lat: Number(lines.Orange[i].lat),
-      lng: Number(lines.Orange[i].lng)
+      lng: Number(lines.Orange[i].lng),
+      title: "this is hard"
     })
-    google.maps.event.addDomListener(orangeMarkers[i],'click', function setWindow() {
+ /*   google.maps.event.addDomListener(orangeMarkers[i],'click', function setWindow() {
       console.log(i);
       orangeinfoWindow[i].setContent('oragnelife');
       orangeinfoWindow[i].open(map, orangeMarkers[i]);
-      });
+      }); */
   }
   var lineDrawing = new google.maps.Polyline({
     path: stationLocations,
