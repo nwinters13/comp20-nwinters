@@ -16,7 +16,7 @@ function createMap()
       var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
       myMarker = new google.maps.Marker({
         title: "You are here",
-        position: mapOptions.center
+        position: new google.maps.LatLng(myLat, myLng)
       });
       myMarker.setMap(map); 
       var infoWindow = new google.maps.InfoWindow();
@@ -25,6 +25,7 @@ function createMap()
         infoWindow.open(map, myMarker);
       });
       createStation(map);
+
     });
 }
 
@@ -95,6 +96,7 @@ function showOrange(map, parsedResponse)
       }
     }(i));
   }
+  calculateDistance(markers, myMarker);
   var lineDrawing = new google.maps.Polyline({
     path: stationLocations,
     geodesic: true,
@@ -317,16 +319,31 @@ function buildStations(map)
 
 
 
-function calculateDistance()
+function calculateDistance(markers, myMarker)
 {
-  var R = 6371; // km
-  var dLat = (myLat-stationLat).toRad();
-  var dLon = (myLng-stationLng).toRad();
-  var myLat = myLat.toRad();
-  var lat2 = lat2.toRad();
+  var closest = 0;
+  var closeDistance = 100000;
+  for(var i = 0; i < markers.length; i++){
 
-  var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-              Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-  var d = R * c;
+    var stationLat = markers[i].lat;
+    var stationgLng = markers[i].lng;
+    var R = 3958.76;
+    var dLat = (myLat - stationLat).toRad();
+    var dLon = (myLng - stationgLng).toRad();
+    var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.cos(myLat.toRad()) * Math.cos(stationLat.toRad()) * 
+              Math.sin(dLon/2) * Math.sin(dLon/2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    var d = R * c;    
+    if(d < closeDistance){
+      closeDistance = d;
+      closest = i;
+    }
   }
+  alert('The closest station to you is: ' + markers[i].title + ' at a distance of: ' + closeDistance);
+}
+ 
+
+Number.prototype.toRad = function() {
+   return this * Math.PI / 180;
+}
