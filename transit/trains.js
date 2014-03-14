@@ -328,20 +328,28 @@ function calculateDistance(markers, myMarker)
   var closeDistance = 100000;
   for(var i = 0; i < markers.length; i++){
     console.log('loopin');
-    var stationLat = markers[i].getPosition().k;
+    
     var stationgLng = markers[i].getPosition().a;
-    var R = 6371;
-    console.log(myLat);
-    console.log(stationLat);
-    console.log('***');
-    var dLat = (myLat - stationLat).toRad();
-    var dLon = (myLng - stationgLng).toRad();
-    var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-              Math.cos(stationLat.toRad()) * Math.cos(myLat.toRad()) * 
-              Math.sin(dLon/2) * Math.sin(dLon/2);
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-    var d = R * c;  
-    d = d / 1.60394  
+    double lat2 = markers[i].getPosition().k;
+    double lon2 = markers[i].getPosition().a;
+    double lat1 = myLat;
+    double lon1 = myLng;
+
+    double R = 6371; // km
+    double x1 = lat2 - lat1;
+    double dLat = x1 * Math.PI / 180;
+    double x2 = lon2 - lon1;
+    double dLon = x2 * Math.PI / 180;
+
+    double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.cos(lat1*Math.PI/180) * Math.cos(lat2*Math.PI/180) *
+        Math.sin(dLon/2) * Math.sin(dLon/2);
+
+    double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    double d = R * c;
+
+    // convert to miles
+    return d / 1.60934;
     console.log(d)
     if(d < closeDistance){
       console.log('found a new buddy');
