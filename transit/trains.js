@@ -346,7 +346,7 @@ function calculateDistance(markers, myMarker)
     var d = R * c; 
 
     // convert to miles
-    return d / 1.60934;
+    d = d / 1.60934;
     if(d < closeDistance){
       closeDistance = d;
       closest = i;
