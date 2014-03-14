@@ -154,9 +154,9 @@ function showRed(map)
 
   for(var i = 0; i < lines.Red.length; i++){
     if(i <= 16)
-      largestPath.push(stationLocations[i]);
+      largestPath[i] = (stationLocations[i]);
     else if(i > 16) 
-      rightPath.push(stationLocations[i - 16]);
+      rightPath[i - 16] = (stationLocations[i]);
   }
   rightPath[0] = stationLocations[12];
   drawRed(largestPath);
