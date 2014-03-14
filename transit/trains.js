@@ -131,7 +131,7 @@ function showRed(map)
 
     infoWindows[i] = new google.maps.InfoWindow({
       position: stationLocations[i],
-      title: marker.title
+      title: markers[i].title
     });
 
     
@@ -140,8 +140,8 @@ function showRed(map)
       return function(){
         console.log("E");
         infoWindow[inneri].close();
-        infoWindow[inneri].setContent(marker[inneri].title);
-        console.log(marker.infoWindowIndex);
+        infoWindow[inneri].setContent(markers[inneri].title);
+        console.log(markers[inneri].infoWindowIndex);
         infoWindows[inneri].open(map, markers[inneri]);
         console.log("G");
       }
