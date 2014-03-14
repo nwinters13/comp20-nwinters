@@ -229,11 +229,11 @@ function createTable(stationName, parsedResponse) {
                           parsedResponse['schedule'][i]['Predictions'][k]['Seconds'] + '</p>';
             }
         }        
-        var toReturn;
+   /*     var toReturn;
         for(var j = 0; j < content.length; j++){
           toReturn = toReturn + content[j];
-        }
-        return toReturn;
+        } */
+                return content;
       }
     }
 
