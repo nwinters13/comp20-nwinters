@@ -323,13 +323,10 @@ function buildStations(map)
 
 function calculateDistance(markers, myMarker)
 {
-  console.log('in calcD');
   var closest = 0;
   var closeDistance = 100000;
   for(var i = 0; i < markers.length; i++){
-    console.log('loopin');
     
-    var stationgLng = markers[i].getPosition().a;
     double lat2 = markers[i].getPosition().k;
     double lon2 = markers[i].getPosition().a;
     double lat1 = myLat;
@@ -350,9 +347,7 @@ function calculateDistance(markers, myMarker)
 
     // convert to miles
     return d / 1.60934;
-    console.log(d)
     if(d < closeDistance){
-      console.log('found a new buddy');
       closeDistance = d;
       closest = i;
     }
