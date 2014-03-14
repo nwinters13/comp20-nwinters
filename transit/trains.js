@@ -145,6 +145,7 @@ function showRed(map, parsedResponse)
       }
     }(i));
   }
+  calculateDistance(markers, myMarker);
   var largestPath = new Array(17);
   var rightPath = new Array(6);
 
@@ -210,6 +211,7 @@ function showBlue(map, parsedResponse)
       }
     }(i));
   }
+  calculateDistance(markers, myMarker);
   var lineDrawing = new google.maps.Polyline({
     path: stationLocations,
     geodesic: true,
@@ -329,6 +331,8 @@ function calculateDistance(markers, myMarker)
     var stationLat = markers[i].getPosition().lat;
     var stationgLng = markers[i].getPosition().lng;
     var R = 3958.76;
+    console.log(myLat);
+    console.log(stationLat);
     var dLat = (myLat - stationLat).toRad();
     var dLon = (myLng - stationgLng).toRad();
     var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
