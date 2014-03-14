@@ -222,7 +222,7 @@ function createTable(stationName, parsedResponse) {
       //  var tableTab = document.createElement('tbody');
         var content = new Array(parsedResponse["schedule"].length);
         for (var i = 0; i < parsedResponse["schedule"].length; i++) {
-          content[i] = '<p>' + parsedResponse['line'] + '   ' + parsedResponse['Schedule'][i]['TripID'] + '   ' + 
+          content[i] = '<p>' + parsedResponse['line'] + '   ' + parsedResponse['schedule'][i]['TripID'] + '   ' + 
                           parsedResponse['schedule'][i]['Destination'] + '   ' + 
                           parsedResponse['schedule'][i]['Predictions'][k]['Seconds'] + '</p>';
         }        
