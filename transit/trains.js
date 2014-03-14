@@ -81,7 +81,7 @@ function showOrange(map)
 
     var infoWindow = new google.maps.InfoWindow();
     google.maps.event.addDomListener(orangeMarkers[i],'click', function setWindow() {
-      infoWindow.setContent(lines.Orange[i].stationInfo);
+      infoWindow.setContent('oragnelife');
       infoWindow.open(map, orangeMarkers[i]);
       });
   }
@@ -116,7 +116,7 @@ function showRed(map)
     stationLocations[i] = new google.maps.LatLng(lines.Red[i].lat, lines.Red[i].lng);
     var infoWindow = new google.maps.InfoWindow();
     google.maps.event.addDomListener(redMarkers[i],'click', function setWindow() {
-      infoWindow.setContent(lines.Red[i].stationInfo);
+      infoWindow.setContent('woahdere');
       infoWindow.open(map, redMarkers[i]);
       });
   }
@@ -151,7 +151,7 @@ function showBlue(map)
     stationLocations[i] = new google.maps.LatLng(lines.Blue[i].lat, lines.Blue[i].lng);
     var infoWindow = new google.maps.InfoWindow();
     google.maps.event.addDomListener(blueMarkers[i],'click', function setWindow() {
-      infoWindow.setContent(lines.Blue[i].stationInfo);
+      infoWindow.setContent('hi');
       infoWindow.open(map, blueMarkers[i]);
       });
   }
