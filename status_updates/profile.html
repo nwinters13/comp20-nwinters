@@ -6,14 +6,42 @@
 <title>Fecesbook</title>
 <script>
 
+count = localStorage['numKeys'];
+
+
+function getUpdates(){
+	var numKeys = localStorage["numKeys"];
+	console.log(numKeys);
+	for(var i = numKeys - 1; i >= 0; i--){
+		var newP = document.createElement("p");
+		var parentElement = document.getElementById('status');
+		var theFirstChild = parentElement.firstChild;
+		var msg = document.getElementById('msg').value;
+		newP.innerHTML = localStorage['status' + i];
+		parentElement.insertBefore(newP, theFirstChild);
+		document.getElementById('msg').value = "";
+	}
+}
+
+
 function createUpdates(){
+console.log('in create updates');
 var currentDate = new Date();
 var newP = document.createElement("p");
 var parentElement= document.getElementById('status');
 var theFirstChild = parentElement.firstChild;
 var msg = document.getElementById("msg").value;
-newP.innerHTML = currentDate.getMonth() + "/" + currentDate.getDay() + "/" + currentDate.getFullYear() + " " + (currentDate.getUTCHours() + 5) + ":" + currentDate.getMinutes() + " - " + msg;
+
+newP.innerHTML = (currentDate.getMonth() + 1) + "/" + currentDate.getDate() + "/" + currentDate.getFullYear() + " " + 
+                   ((currentDate.getUTCHours() + 20) % 24) + ":" + currentDate.getMinutes() + " - " + msg;
+
 parentElement.insertBefore(newP, theFirstChild);
+
+localStorage['status'+ count] = newP.innerHTML;
+count = count + 1;
+localStorage["numKeys"]++;
+console.log(localStorage['numKeys']);
+
 document.getElementById("msg").value = "";
 }
 </script>
@@ -21,7 +49,7 @@ document.getElementById("msg").value = "";
 
 </head>
 
-<body>
+<body onload="getUpdates()">
 	<h1>Fecebook</h1>
 	<div id="nav">
 		<ul>
