@@ -6,26 +6,29 @@
 <title>Fecesbook</title>
 <script>
 
-count = localStorage['numKeys'];
+if(!localStorage['numKeys']){
+	localStorage['numKeys'] = 0;
+}
 
+//localStorage.clear();
 
 function getUpdates(){
-	var numKeys = localStorage["numKeys"];
-	console.log(numKeys);
-	for(var i = numKeys - 1; i >= 0; i--){
-		var newP = document.createElement("p");
-		var parentElement = document.getElementById('status');
-		var theFirstChild = parentElement.firstChild;
-		var msg = document.getElementById('msg').value;
-		newP.innerHTML = localStorage['status' + i];
-		parentElement.insertBefore(newP, theFirstChild);
-		document.getElementById('msg').value = "";
+	if(localStorage['numKeys'] > 0){
+		var numKeys = localStorage["numKeys"];
+		for(var i = 0; i < numKeys; i++){
+			var newP = document.createElement("p");
+			var parentElement = document.getElementById('status');
+			var theFirstChild = parentElement.firstChild;
+			var msg = document.getElementById('msg').value;
+			newP.innerHTML = localStorage['status' + i];
+			parentElement.insertBefore(newP, theFirstChild);
+			document.getElementById('msg').value = "";
+		}
 	}
 }
 
 
 function createUpdates(){
-console.log('in create updates');
 var currentDate = new Date();
 var newP = document.createElement("p");
 var parentElement= document.getElementById('status');
@@ -37,10 +40,8 @@ newP.innerHTML = (currentDate.getMonth() + 1) + "/" + currentDate.getDate() + "/
 
 parentElement.insertBefore(newP, theFirstChild);
 
-localStorage['status'+ count] = newP.innerHTML;
-count = count + 1;
+localStorage['status'+ localStorage['numKeys']] = newP.innerHTML;
 localStorage["numKeys"]++;
-console.log(localStorage['numKeys']);
 
 document.getElementById("msg").value = "";
 }
