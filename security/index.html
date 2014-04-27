@@ -1,1 +1,94 @@
 //STUB
+
+
+
+Introduction:
+   The purpose of this assessment was to determine how the <a href="http://young-mountain-1326.herokuapp.com/">ScoreCenter</a> application created by 
+   <a href="http://nwinters13.github.io/">Github User @NWINTERS</a> was vulnerable to outside attack and tampering. I carried out this attack on my own
+   product because it was not worth hiring a real developer to determine the vulernabilites of this product because many were so apparent I could find
+   them on my own (in reality my partner hasn't answered me in an hour and time is previous). These attempts to tamper with the app should help develop
+   my skills in finding vulernabilites in code and help shore up my app from future attacks.
+
+   The majority of these attacks focus on how data can be sent to the MongoDB server that holds all of the ScoreCenter information, as well as how the
+     same information is read out from the server and posted to the ScoreCenter webpage which users will access in order to view their highscores, 
+     as well as all highscores. The purpose of this assignment was to find issues in order to help protect users information, privacy, and innocence.
+
+
+METHODOLOGY:
+    The two types of tests carried out were black-box testing as well as stress testing. The black box testing was carried out by modifying the
+      jquery post in my local 2048 game to modify what data was sent to the heroku mongolabs server. The stress testing modified that same
+      black box testing to cause a large amount of sends to occur in succession, which put a heavy load on the server. These two simple testing
+      methods allowed me to find plenty of vulnerabilites.
+
+ABSTRACT OF FINDINGS:
+    Most issues with programming and security occur at the interfaces of modules. In this case, that interface was where the server received and output
+      the user data that it took in. The code did not attempt to prevent the user from inserting malicious or large amounts of information, and therefore
+      left the website open to all types of attacks. The website will also let any website send information to it, rather than protecting itself and only
+      accepting information from a list of trusted sites. In fact, a user could modify their user name at will, which prevents people from having unique
+      usernames and therefore unique lists of scores. All of these vulnerabilites are detrimental not only to the basic purpose of the application, but 
+      also could allow the website to be redirected to another website or crashed all together.
+
+
+
+ISSUE: SCRIPT INSERTS
+LOCATION: Jquery post in game_manager.js
+SEVERITY: HIGH
+DESCRIPTION: The fields within game_manager.js that send information to the mongo server can be modified to send
+   any information, including script tags. Sending script tags allows alerts, redirects, and other actions to be
+   carried out without user consent, which can be extremely harmful to any user that accesses the webpage.
+PROOF: SCREENSHOTS OF ALERTS
+RESOLUTION: A quick websearch of stripping script tags shows that saving information into an html div and searching
+   for the word script, then removing that child, will allow script tags to not execute upon loading the webpage
+   and render them harmless.
+
+
+ISSUE: CORS
+LOCATION:
+SEVERITY:
+DESCRIPTION:
+PROOF:
+RESOLUTION:
+
+
+
+ISSUE: SENDING IMAGES
+LOCATION:
+SEVERITY:
+DESCRIPTION:
+PROOF:
+RESOLUTION:
+
+
+ISSUE: OVERLOADING SERVER
+LOCATION:
+SEVERITY:
+DESCRIPTION:
+PROOF:
+RESOLUTION:
+
+
+
+CORS:
+
+
+
+
+SENDING IMAGES:
+    Security Risk: Medium
+    This allows the user to display any image they want for any user to see. While this isn't immediately
+      going to break the webpage, it could be harmful to users because they could be exposed to NSFW
+      content without intent/express consent.
+
+
+OVERLOADING SERVER:
+     Security Risk: High
+     When combined with the sending images in order to spam the server with high amounts of data to process
+        at once, the app would produce an application error despite the database not being full.
+
+
+SCRIPT INSERTS:
+
+    High, as evidenced by the ability for ming to send people to kermit the frog saying yay
+
+    FIX: Cast all things that you pull out of the post as something, so casting the scripts
+         as strings should fix that issue
