@@ -31,7 +31,7 @@ ABSTRACT OF FINDINGS:
 
 
 ISSUE: SCRIPT INSERTS
-LOCATION: Jquery post in game_manager.js
+LOCATION: Jquery post in game_manager.js (sending to/reading from the MongoDB)
 SEVERITY: HIGH
 DESCRIPTION: The fields within game_manager.js that send information to the mongo server can be modified to send
    any information, including script tags. Sending script tags allows alerts, redirects, and other actions to be
@@ -43,28 +43,40 @@ RESOLUTION: A quick websearch of stripping script tags shows that saving informa
 
 
 ISSUE: CORS
-LOCATION:
-SEVERITY:
-DESCRIPTION:
-PROOF:
-RESOLUTION:
+LOCATION: The app.post function in web.js
+SEVERITY: MEDIUM
+DESCRIPTION: The Cross Origin Resource Sharing is enabled. Great, that means that data can be sent to the server from
+  webpages, which is the desired function, however it does not specify which webpage data can be sent from, which allows
+  any webpage to post data to the mongo server. This means that all those script tags and images and other vulnerabilities
+  that might be inserted can now be sent from any origin.
+PROOF: CORS IMAGES
+RESOLUTION: Where the '*' is posted means that any sender is accepted, as seen from the other image it could be modified
+  to any webpage to allow for just one origin.
 
 
 
 ISSUE: SENDING IMAGES
-LOCATION:
-SEVERITY:
-DESCRIPTION:
-PROOF:
-RESOLUTION:
+LOCATION: The jquery post in game_manager.js (sending to/reading from the MongoDB)
+SEVERITY: MEDIUM
+DESCRIPTION:  This allows the user to display any image they want for any user to see. While this isn't immediately
+      going to break the webpage, it could be harmful to users because they could be exposed to NSFW
+      content without intent/express consent.
+PROOF: Images show the code
+RESOLUTION: Just as with script tags, the image tags could be disallowed to prevent the webpage from reading the tags
+  as anything except a simple string when they are posted to the webpage.
 
 
 ISSUE: OVERLOADING SERVER
-LOCATION:
-SEVERITY:
-DESCRIPTION:
+LOCATION: The jquery post
+SEVERITY: HIGH
+DESCRIPTION:     When combined with the sending images in order to spam the server with high amounts of data to process
+        at once, the app would produce an application error despite the database not being full. This means that a lot
+        of people playing this game would either not have their scores logged or cause the database to crash altogether,
+        preventing this website from serving any purpose.
 PROOF:
-RESOLUTION:
+RESOLUTION: Upgrade the MongoDB server, or make a change that causes each user to get a unique key that only sends their
+        score and map, which would prevent people from sending to other peoples usernames, and could open multiple channels
+        for the server to take in data.
 
 
 
@@ -75,9 +87,7 @@ CORS:
 
 SENDING IMAGES:
     Security Risk: Medium
-    This allows the user to display any image they want for any user to see. While this isn't immediately
-      going to break the webpage, it could be harmful to users because they could be exposed to NSFW
-      content without intent/express consent.
+
 
 
 OVERLOADING SERVER:
